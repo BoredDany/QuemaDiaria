@@ -1,0 +1,20 @@
+[
+  {
+    "name": "ana",
+    "identification": "123456789",
+    "email": "ana@gmail.com",
+    "credentials": {
+      "username": "ana",
+      "password": "Ana123*123#"
+    }
+  },
+  {
+    "name": "a",
+    "identification": "123456789",
+    "email": "ana2@gmail.com",
+    "credentials": {
+      "username": "ana2",
+      "password": "1234QQsss#*"
+    }
+  }
+]
