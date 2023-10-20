@@ -1,7 +1,0 @@
-ing\soft\quemadiaria\Model\Domain\Entities\Credential.class
-ing\soft\quemadiaria\Controller\SignUpController.class
-module-info.class
-ing\soft\quemadiaria\Model\Domain\Entities\Trainer.class
-ing\soft\quemadiaria\HelloApplication.class
-ing\soft\quemadiaria\Controller\CentralController.class
-ing\soft\quemadiaria\Model\Domain\Exceptions\TrainerException.class
