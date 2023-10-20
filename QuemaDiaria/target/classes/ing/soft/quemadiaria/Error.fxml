@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ing.soft.quemadiaria.Controller.ErrorController">
+   <children>
+      <Label fx:id="messageLabel" layoutX="32.0" layoutY="91.0" prefHeight="18.0" prefWidth="135.0" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,20 @@
+[
+  {
+    "name": "ana",
+    "identification": "1",
+    "email": "ana@",
+    "credentials": {
+      "username": "ana1",
+      "password": "123"
+    }
+  },
+  {
+    "name": "a",
+    "identification": "a",
+    "email": "a",
+    "credentials": {
+      "username": "a",
+      "password": "1"
+    }
+  }
+]
