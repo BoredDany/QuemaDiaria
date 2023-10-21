@@ -1,5 +1,6 @@
 package ing.soft.quemadiariaproject.Controller;
 
+import ing.soft.quemadiariaproject.Model.DTOs.TrainerDTO;
 import ing.soft.quemadiariaproject.Model.Domain.Entities.Trainer;
 import ing.soft.quemadiariaproject.Model.Domain.Exceptions.TrainerException;
 import ing.soft.quemadiariaproject.Model.Facade.TrainerFacade;
@@ -23,8 +24,14 @@ public class WelcomeController {
         TrainerFacade login = new TrainerServices();
         try{
             Trainer trainer = login.doLogin(username, password);
-            System.out.println("Logged in: " + trainer.getCredentials());
-            CentralController.getInstance().loadScreen("TrainerAccount.fxml");
+            TrainerDTO trainerDTO = new TrainerDTO(trainer.getName(),
+                    trainer.getIdentification(), trainer.getEmail(),
+                    trainer.getSocialMedia(),
+                    trainer.getCredentials().getUsername(),
+                    trainer.getSpeciality());
+            System.out.println("Logged in: " + trainer);
+            CentralController.setTrainerDTO(trainerDTO);
+            CentralController.getInstance().loadScreen("TrainerPrincipal.fxml");
         }catch(TrainerException | IOException e){
             System.out.println(e.getMessage());
         }

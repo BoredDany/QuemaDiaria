@@ -9,6 +9,8 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
+import java.io.IOException;
+
 public class SignUpController {
     public TextField nameField;
     public TextField idField;
@@ -16,6 +18,7 @@ public class SignUpController {
     public TextField usernameField;
     public TextField passwordField;
     public Button buttonSignUp;
+    public Button buttonBack;
 
     public void signUp(ActionEvent actionEvent) {
         String name = nameField.getText();
@@ -34,4 +37,11 @@ public class SignUpController {
         }
     }
 
+    public void goToWelcome(ActionEvent actionEvent) {
+        try {
+            CentralController.getInstance().loadScreen("Welcome.fxml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

@@ -6,18 +6,25 @@ public class Trainer {
     private String name;
     private String identification;
     private String email;
-    private String contact;
     private List<String> socialMedia;
     private Credential credentials;
     private String speciality;
-    private List<Program> programs;
-    private List<Certificate> certificates;
 
     public Trainer(String name, String identification, String email, Credential credentials) {
         this.name = name;
         this.identification = identification;
         this.email = email;
         this.credentials = credentials;
+    }
+
+    public Trainer(String name, String identification, String email,
+                   List<String> socialMedia, Credential credentials, String speciality) {
+        this.name = name;
+        this.identification = identification;
+        this.email = email;
+        this.socialMedia = socialMedia;
+        this.credentials = credentials;
+        this.speciality = speciality;
     }
 
     public String getName() {
@@ -29,9 +36,6 @@ public class Trainer {
     public String getEmail() {
         return email;
     }
-    public String getContact() {
-        return contact;
-    }
     public List<String> getSocialMedia() {
         return socialMedia;
     }
@@ -41,12 +45,6 @@ public class Trainer {
     public String getSpeciality() {
         return speciality;
     }
-    public List<Program> getPrograms() {
-        return programs;
-    }
-    public List<Certificate> getCertificates() {
-        return certificates;
-    }
 
     @Override
     public String toString() {
@@ -54,7 +52,6 @@ public class Trainer {
                 "name='" + name + '\'' +
                 ", identification='" + identification + '\'' +
                 ", email='" + email + '\'' +
-                ", contact='" + contact + '\'' +
                 ", socialMedia=" + socialMedia +
                 ", credentials=" + credentials +
                 ", speciality='" + speciality + '\'' +
