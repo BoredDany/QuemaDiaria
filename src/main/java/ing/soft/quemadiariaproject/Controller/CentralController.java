@@ -1,6 +1,7 @@
 package ing.soft.quemadiariaproject.Controller;
 
 import ing.soft.quemadiariaproject.HelloApplication;
+import ing.soft.quemadiariaproject.Model.Domain.Entities.Trainer;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;

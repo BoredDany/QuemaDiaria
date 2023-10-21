@@ -3,8 +3,8 @@ package ing.soft.quemadiariaproject.Controller;
 import ing.soft.quemadiariaproject.Model.Domain.Entities.Credential;
 import ing.soft.quemadiariaproject.Model.Domain.Entities.Trainer;
 import ing.soft.quemadiariaproject.Model.Domain.Exceptions.TrainerException;
-import ing.soft.quemadiariaproject.Model.Persistence.Files.FilePersistence;
-import ing.soft.quemadiariaproject.Model.UseCases.Register;
+import ing.soft.quemadiariaproject.Model.Facade.TrainerFacade;
+import ing.soft.quemadiariaproject.Model.Facade.TrainerServices;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -25,7 +25,7 @@ public class SignUpController {
         String password = passwordField.getText();
 
         try{
-            Register register = new Register(new FilePersistence());
+            TrainerFacade register = new TrainerServices();
             Trainer newTrainer = new Trainer(name, identification, email, new Credential(username, password));
             register.registerTrainer(newTrainer);
             System.out.println("Saved successfully: " + newTrainer);

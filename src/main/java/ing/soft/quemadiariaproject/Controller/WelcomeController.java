@@ -1,8 +1,9 @@
 package ing.soft.quemadiariaproject.Controller;
 
+import ing.soft.quemadiariaproject.Model.Domain.Entities.Trainer;
 import ing.soft.quemadiariaproject.Model.Domain.Exceptions.TrainerException;
-import ing.soft.quemadiariaproject.Model.Persistence.Files.FilePersistence;
-import ing.soft.quemadiariaproject.Model.UseCases.Login;
+import ing.soft.quemadiariaproject.Model.Facade.TrainerFacade;
+import ing.soft.quemadiariaproject.Model.Facade.TrainerServices;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -19,14 +20,14 @@ public class WelcomeController {
     public void login(ActionEvent actionEvent) {
         String username = usernameField.getText();
         String password = passwordField.getText();
-
-        Login login = new Login(new FilePersistence());
+        TrainerFacade login = new TrainerServices();
         try{
-            login.doLogin(username, password);
-        }catch(TrainerException e){
+            Trainer trainer = login.doLogin(username, password);
+            System.out.println("Logged in: " + trainer.getCredentials());
+            CentralController.getInstance().loadScreen("TrainerAccount.fxml");
+        }catch(TrainerException | IOException e){
             System.out.println(e.getMessage());
         }
-
     }
 
     public void signUp(ActionEvent actionEvent) {

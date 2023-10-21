@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ing.soft.quemadiariaproject.Controller.TrainerAccountController">
+   <children>
+      <Button fx:id="buttonLogout" layoutX="20.0" layoutY="22.0" mnemonicParsing="false" onAction="#logout" text="Log out" />
+      <BorderPane layoutX="228.0" layoutY="58.0" prefHeight="135.0" prefWidth="145.0" style="-fx-background-color: FFA591;">
+         <center>
+            <ImageView fitHeight="106.0" fitWidth="122.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+               <image>
+                  <Image url="@profile.png" />
+               </image>
+            </ImageView>
+         </center>
+      </BorderPane>
+      <Label fx:id="usernameLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="228.0" layoutY="200.0" prefHeight="25.0" prefWidth="145.0" style="-fx-background-color: FFD5CC;" textAlignment="CENTER" textOverrun="CLIP" />
+      <Label fx:id="specialityLabel" alignment="CENTER" layoutX="228.0" layoutY="233.0" prefHeight="25.0" prefWidth="145.0" style="-fx-background-color: FFD5CC;" />
+      <ButtonBar layoutX="125.0" layoutY="278.0" prefHeight="92.0" prefWidth="346.0">
+        <buttons>
+          <Button fx:id="buttonAccount" mnemonicParsing="false" onAction="#goToAccount" text="Account" />
+            <Button fx:id="buttonStatistics" mnemonicParsing="false" onAction="#goToStatistics" text="Statistics" />
+            <Button fx:id="buttonWallet" mnemonicParsing="false" onAction="#goToWallet" text="Wallet" />
+            <Button fx:id="buttonPrograms" mnemonicParsing="false" onAction="#goToPrograms" text="Programs" />
+        </buttons>
+      </ButtonBar>
+   </children>
+</AnchorPane>

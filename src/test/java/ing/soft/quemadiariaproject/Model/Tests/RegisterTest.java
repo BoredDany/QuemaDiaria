@@ -42,37 +42,32 @@ class RegisterTest  {
 
     @Test
     void invalidEmail() {
-        trainer.setEmail("ana");
-        assertThrows(TrainerException.class, () -> register.verifyEmail(trainer.getEmail()));
+        String email = "ana";
+        assertThrows(TrainerException.class, () -> register.verifyEmail(email));
     }
 
     @Test
     void invalidPassword() {
         Credential badCredentials = new Credential("name", "123");
-        trainer.setCredentials(badCredentials);
-        assertThrows(TrainerException.class, () -> register.verifyPassword(trainer.getCredentials().getPassword()));
+        assertThrows(TrainerException.class, () -> register.verifyPassword(badCredentials.getPassword()));
     }
 
     @Test
     void emailRegistered() {
-        trainer.setEmail("ana@gmail.com");
-        assertThrows(TrainerException.class, () -> register.verifyAccount(trainer.getCredentials().getUsername(), trainer.getEmail()));
+        String email = "ana@gmail.com";
+        assertThrows(TrainerException.class, () -> register.verifyAccount(trainer.getCredentials().getUsername(), email));
     }
 
     @Test
     void usernameRegistered() {
         Credential credentials = new Credential("ana", "123");
-        trainer.setCredentials(credentials);
-        assertThrows(TrainerException.class, () -> register.verifyAccount(trainer.getCredentials().getUsername(), trainer.getEmail()));
+        assertThrows(TrainerException.class, () -> register.verifyAccount(credentials.getUsername(), trainer.getEmail()));
     }
 
     @Test
     void correctData() {
         Credential credentials = new Credential("user", "Example12*Cred#");
-        trainer.setCredentials(credentials);
-        trainer.setName("ana");
-        trainer.setIdentification("12345");
-        trainer.setEmail("ana@gmail.com");
+        Trainer trainer = new Trainer("ana","123456789", "ana@gmail.com", credentials);
         assertThrows(TrainerException.class, () -> register.registerTrainer(trainer));
     }
 

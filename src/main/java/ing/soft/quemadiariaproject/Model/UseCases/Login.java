@@ -20,10 +20,10 @@ public class Login {
             throw new TrainerException("Trainer not found");
         }
     }
-    public void doLogin(String username, String password) throws TrainerException {
+    public Trainer doLogin(String username, String password) throws TrainerException {
         Trainer trainer = persistence.consultByUsername(username);
         trainerExists(trainer);
         verifyCredentials(username, password,trainer);
-        System.out.println("Logged in: " + trainer.getCredentials());
+        return trainer;
     }
 }

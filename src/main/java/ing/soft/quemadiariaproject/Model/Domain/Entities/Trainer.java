@@ -10,11 +10,8 @@ public class Trainer {
     private List<String> socialMedia;
     private Credential credentials;
     private String speciality;
-    /*
-    private List<String> certificates
-    Opción: cargar rutas de certificados
-     */
-
+    private List<Program> programs;
+    private List<Certificate> certificates;
 
     public Trainer(String name, String identification, String email, Credential credentials) {
         this.name = name;
@@ -26,56 +23,29 @@ public class Trainer {
     public String getName() {
         return name;
     }
-
     public String getIdentification() {
         return identification;
     }
-
     public String getEmail() {
         return email;
     }
-
     public String getContact() {
         return contact;
     }
-
     public List<String> getSocialMedia() {
         return socialMedia;
     }
-
     public Credential getCredentials(){
         return this.credentials;
     }
-    public void setContact(String contact) {
-        this.contact = contact;
-    }
-
     public String getSpeciality() {
         return speciality;
     }
-
-    public void setName(String name) {
-        this.name = name;
+    public List<Program> getPrograms() {
+        return programs;
     }
-
-    public void setSpeciality(String speciality) {
-        this.speciality = speciality;
-    }
-
-    public void setIdentification(String identification) {
-        this.identification = identification;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public void setCredentials(Credential credentials) {
-        this.credentials = credentials;
-    }
-
-    public void setSocialMedia(List<String> socialMedia) {
-        this.socialMedia = socialMedia;
+    public List<Certificate> getCertificates() {
+        return certificates;
     }
 
     @Override

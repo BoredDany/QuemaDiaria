@@ -16,5 +16,14 @@
       "username": "ana2",
       "password": "1234QQsss#*"
     }
+  },
+  {
+    "name": "a",
+    "identification": "a",
+    "email": "ana23@gmail.com",
+    "credentials": {
+      "username": "ana23",
+      "password": "a*47Ys3$"
+    }
   }
 ]
