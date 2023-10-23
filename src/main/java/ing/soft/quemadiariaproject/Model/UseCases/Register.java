@@ -1,8 +1,11 @@
 package ing.soft.quemadiariaproject.Model.UseCases;
 
+import ing.soft.quemadiariaproject.Model.DTOs.TrainerDTO;
 import ing.soft.quemadiariaproject.Model.Domain.Entities.Trainer;
 import ing.soft.quemadiariaproject.Model.Domain.Exceptions.TrainerException;
 import ing.soft.quemadiariaproject.Model.UseCases.Persistence.Persistence;
+
+import java.util.List;
 
 public class Register {
     private Persistence persistence;
@@ -19,7 +22,7 @@ public class Register {
     public void verifyIdentification(String identification) throws TrainerException {
         String ID_REGEX = "^[A-Za-z0-9]{8,12}$";
         if(!identification.matches(ID_REGEX)){
-            throw new TrainerException("Invalid email");
+            throw new TrainerException("Invalid identification");
         }
     }
     public void verifyEmail(String email) throws TrainerException {
@@ -45,5 +48,18 @@ public class Register {
         verifyPassword(trainer.getCredentials().getPassword());
         verifyAccount(trainer.getCredentials().getUsername(), trainer.getEmail());
         persistence.saveTrainer(trainer);
+    }
+    public void updateTrainer(TrainerDTO trainerDTO) {
+        List<Trainer> trainers = persistence.consultListTrainers();
+        for (int i = 0; i < trainers.size(); i++) {
+            Trainer t = trainers.get(i);
+            if (t.getCredentials().getUsername().equals(trainerDTO.getUsername())) {
+                Trainer trainerModified = new Trainer(trainerDTO.getName(), trainerDTO.getIdentification(), trainerDTO.getEmail(),
+                        trainerDTO.getSocialMedia(), t.getCredentials(),
+                        trainerDTO.getSpeciality());
+                trainers.set(i, trainerModified);
+            }
+        }
+        persistence.updateFile(trainers);
     }
 }

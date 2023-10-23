@@ -1,15 +1,20 @@
 [
   {
-    "name": "ana",
-    "identification": "123456789",
-    "email": "ana@gmail.com",
+    "name": "ANA1",
+    "identification": "12345678910",
+    "email": "ana@d",
+    "socialMedia": [
+      "ana.aba",
+      "anita.jaja",
+      "ANA1.JAJA"
+    ],
     "credentials": {
       "username": "ana",
       "password": "Ana123*123#"
     }
   },
   {
-    "name": "a",
+    "name": "ANA2",
     "identification": "123456789",
     "email": "ana2@gmail.com",
     "credentials": {
@@ -18,7 +23,7 @@
     }
   },
   {
-    "name": "a",
+    "name": "ANA23",
     "identification": "a",
     "email": "ana23@gmail.com",
     "credentials": {

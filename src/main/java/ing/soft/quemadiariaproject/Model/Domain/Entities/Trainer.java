@@ -18,7 +18,8 @@ public class Trainer {
     }
 
     public Trainer(String name, String identification, String email,
-                   List<String> socialMedia, Credential credentials, String speciality) {
+                   List<String> socialMedia, Credential credentials,
+                   String speciality) {
         this.name = name;
         this.identification = identification;
         this.email = email;

@@ -25,17 +25,12 @@ public class TrainerDTO {
     public TrainerDTO(){
 
     }
+
     public String getName() {
         return name;
     }
-    public void setName(String name) {
-        this.name = name;
-    }
     public String getIdentification() {
         return identification;
-    }
-    public void setIdentification(String identification) {
-        this.identification = identification;
     }
     public String getEmail() {
         return email;
@@ -48,6 +43,24 @@ public class TrainerDTO {
     }
     public String getSpeciality() {
         return speciality;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+    public void setIdentification(String identification) {
+        this.identification = identification;
+    }
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    public void setSocialMedia(List<String> socialMedia) {
+        this.socialMedia = socialMedia;
+    }
+    public void setUsername(String username) {
+        this.username = username;
+    }
+    public void setSpeciality(String speciality) {
+        this.speciality = speciality;
     }
 
     @Override

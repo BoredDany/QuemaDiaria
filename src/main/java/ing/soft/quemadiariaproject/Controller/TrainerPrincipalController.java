@@ -4,6 +4,8 @@ import ing.soft.quemadiariaproject.Model.DTOs.TrainerDTO;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
 
@@ -15,6 +17,7 @@ public class TrainerPrincipalController {
     public Button buttonStatistics;
     public Button buttonWallet;
     public Button buttonPrograms;
+    public ImageView accountIcon;
     private TrainerDTO trainerDTO;
     public void initialize(){
         trainerDTO = CentralController.getTrainerDTO();
@@ -29,7 +32,7 @@ public class TrainerPrincipalController {
         }
     }
 
-    public void goToAccount(ActionEvent actionEvent) {
+    public void goToAccount(MouseEvent actionEvent) {
         try {
             CentralController.getInstance().loadScreen("TrainerAccount.fxml");
         } catch (IOException e) {
@@ -37,12 +40,20 @@ public class TrainerPrincipalController {
         }
     }
 
-    public void goToStatistics(ActionEvent actionEvent) {
+    public void goToStatistics(MouseEvent actionEvent) {
     }
 
-    public void goToWallet(ActionEvent actionEvent) {
+    public void goToWallet(MouseEvent actionEvent) {
     }
 
-    public void goToPrograms(ActionEvent actionEvent) {
+    public void goToPrograms(MouseEvent actionEvent) {
+    }
+
+    public void goAccount(MouseEvent mouseEvent) {
+        try {
+            CentralController.getInstance().loadScreen("TrainerAccount.fxml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

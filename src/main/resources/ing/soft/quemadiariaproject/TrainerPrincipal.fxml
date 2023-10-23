@@ -5,25 +5,40 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ing.soft.quemadiariaproject.Controller.TrainerPrincipalController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: FFFF;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ing.soft.quemadiariaproject.Controller.TrainerPrincipalController">
    <children>
       <Button fx:id="buttonLogout" layoutX="20.0" layoutY="22.0" mnemonicParsing="false" onAction="#logout" text="Log out" />
-      <BorderPane layoutX="246.0" layoutY="47.0" prefHeight="107.0" prefWidth="109.0" style="-fx-background-color: FFA591;">
-         <center>
-            <ImageView fitHeight="83.0" fitWidth="92.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
-               <image>
-                  <Image url="@profile.png" />
-               </image>
-            </ImageView>
-         </center>
-      </BorderPane>
-      <Label fx:id="usernameLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="228.0" layoutY="162.0" prefHeight="25.0" prefWidth="145.0" style="-fx-background-color: FFD5CC;" textAlignment="CENTER" textOverrun="CLIP" />
-      <Label fx:id="specialityLabel" alignment="CENTER" layoutX="228.0" layoutY="200.0" prefHeight="25.0" prefWidth="145.0" style="-fx-background-color: FFD5CC;" />
-    <Button fx:id="buttonAccount" layoutX="214.0" layoutY="262.0" mnemonicParsing="false" onAction="#goToAccount" prefHeight="25.0" prefWidth="67.0" text="Account" />
-      <Button fx:id="buttonStatistics" layoutX="214.0" layoutY="324.0" mnemonicParsing="false" onAction="#goToStatistics" prefHeight="25.0" prefWidth="67.0" text="Statistics" />
-      <Button fx:id="buttonWallet" layoutX="320.0" layoutY="262.0" mnemonicParsing="false" onAction="#goToWallet" prefHeight="25.0" prefWidth="67.0" text="Wallet" />
-      <Button fx:id="buttonPrograms" layoutX="320.0" layoutY="324.0" mnemonicParsing="false" onAction="#goToPrograms" text="Programs" />
+      <Label fx:id="usernameLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="228.0" layoutY="116.0" prefHeight="25.0" prefWidth="145.0" textAlignment="CENTER" textOverrun="CLIP" />
+      <Label fx:id="specialityLabel" alignment="CENTER" layoutX="228.0" layoutY="146.0" prefHeight="25.0" prefWidth="145.0" />
+      <ImageView fitHeight="63.0" fitWidth="67.0" layoutX="269.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@profile.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="accountIcon" fitHeight="63.0" fitWidth="67.0" layoutX="98.0" layoutY="202.0" onMouseClicked="#goToAccount" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@account.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="63.0" fitWidth="83.0" layoutX="215.0" layoutY="202.0" onMouseClicked="#goToStatistics" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@statistics.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="63.0" fitWidth="75.0" layoutX="331.0" layoutY="202.0" onMouseClicked="#goToWallet" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@wallet.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="83.0" fitWidth="67.0" layoutX="436.0" layoutY="200.0" onMouseClicked="#goToPrograms" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@programs.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="108.0" layoutY="274.0" text="Account" />
+      <Label layoutX="223.0" layoutY="274.0" text="Statistics" />
+      <Label layoutX="346.0" layoutY="274.0" text="Wallet" />
+      <Label layoutX="444.0" layoutY="274.0" text="Programs" />
    </children>
 </AnchorPane>

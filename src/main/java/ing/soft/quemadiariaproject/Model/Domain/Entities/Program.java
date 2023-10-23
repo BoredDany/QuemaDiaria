@@ -5,4 +5,30 @@ public class Program {
     String name;
     String description;
 
+    public Program(String trainerUsername, String name, String description) {
+        TrainerUsername = trainerUsername;
+        this.name = name;
+        this.description = description;
+    }
+
+    public String getTrainerUsername() {
+        return TrainerUsername;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    @Override
+    public String toString() {
+        return "Program{" +
+                "TrainerUsername='" + TrainerUsername + '\'' +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                '}';
+    }
 }

@@ -9,5 +9,6 @@ public interface Persistence {
     void saveTrainer(Trainer trainer);
     List<Trainer> consultListTrainers();
     Trainer consultByUsername(String username);
-    public boolean isRegistered(String username, String email);
+    boolean isRegistered(String username, String email);
+    public void updateFile(List<Trainer> trainerList);
 }

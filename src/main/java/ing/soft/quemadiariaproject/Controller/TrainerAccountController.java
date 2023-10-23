@@ -1,6 +1,9 @@
 package ing.soft.quemadiariaproject.Controller;
 
 import ing.soft.quemadiariaproject.Model.Domain.Entities.Certificate;
+import ing.soft.quemadiariaproject.Model.Domain.Exceptions.TrainerException;
+import ing.soft.quemadiariaproject.Model.Facade.TrainerFacade;
+import ing.soft.quemadiariaproject.Model.Facade.TrainerServices;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -19,8 +22,9 @@ public class TrainerAccountController {
     public TextField emailField;
     public TextField specialityField;
     public TextField usernameField;
-    public TextField newSocialmediaLabel;
-    public TextField newCertifiateLabel;
+    public TextField newSocialmediaField;
+    public TextField passwordField;
+    public TextField newCertifiateField;
     public ListView socialmediaList;
     public ListView certificatesList;
     public Button buttonBack;
@@ -33,6 +37,7 @@ public class TrainerAccountController {
     public Button buttonAddCertificate;
     public Button buttonChangePassword;
 
+    private TrainerFacade modifyData = new TrainerServices();
     public void initialize(){
         nameField.setText(CentralController.getTrainerDTO().getName());
         identificationField.setText(CentralController.getTrainerDTO().getIdentification());
@@ -40,8 +45,8 @@ public class TrainerAccountController {
         specialityField.setText(CentralController.getTrainerDTO().getSpeciality());
         usernameField.setText(CentralController.getTrainerDTO().getUsername());
         List<String>items = CentralController.getTrainerDTO().getSocialMedia();
-        socialmediaList.setItems((ObservableList) items);
-
+        ObservableList<String> observableItems = FXCollections.observableArrayList(items);
+        socialmediaList.setItems(observableItems);
     }
     public void goToPrincipalTrainer(ActionEvent actionEvent) {
         try {
@@ -52,21 +57,61 @@ public class TrainerAccountController {
     }
 
     public void changeName(ActionEvent actionEvent) {
+        String newName = nameField.getText();
+        try{
+            modifyData.modifyName(newName, CentralController.getTrainerDTO());
+            initialize();
+            System.out.println("Name modified");
+        }catch(TrainerException e){
+            System.out.println(e.getMessage());
+        }
     }
 
     public void changeId(ActionEvent actionEvent) {
+        String newId = identificationField.getText();
+        try{
+            modifyData.modifyID(newId, CentralController.getTrainerDTO());
+            initialize();
+            System.out.println("ID modified");
+        }catch(TrainerException e){
+            System.out.println(e.getMessage());
+        }
     }
 
     public void changeEmail(ActionEvent actionEvent) {
+        String newEmail = emailField.getText();
+        try{
+            modifyData.modifyEmail(newEmail, CentralController.getTrainerDTO());
+            initialize();
+            System.out.println("Email modified");
+        }catch(TrainerException e){
+            System.out.println(e.getMessage());
+        }
     }
 
     public void changeSpeciality(ActionEvent actionEvent) {
+        String newSpeciality = specialityField.getText();
+        try{
+            modifyData.modifySpeciality(newSpeciality, CentralController.getTrainerDTO());
+            initialize();
+            System.out.println("Speciality modified");
+        }catch(TrainerException e){
+            System.out.println(e.getMessage());
+        }
     }
 
     public void changeUsername(ActionEvent actionEvent) {
     }
 
     public void addSocialmedia(ActionEvent actionEvent) {
+        String newSocialmedia = newSocialmediaField.getText();
+        try{
+            modifyData.addSocialmedia(newSocialmedia, CentralController.getTrainerDTO());
+            initialize();
+            System.out.println("Socialmedia added");
+        }catch(TrainerException e){
+            System.out.println(e.getMessage());
+        }
     }
 
     public void addCertificate(ActionEvent actionEvent) {

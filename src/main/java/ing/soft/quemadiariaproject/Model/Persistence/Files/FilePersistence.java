@@ -86,4 +86,22 @@ public class FilePersistence implements Persistence {
                 filter(usuario -> usuario.getCredentials().getUsername().equals(username) || usuario.getEmail().equals(email)).
                 findFirst().isPresent();
     }
+
+    @Override
+    public void updateFile(List<Trainer> trainerList) {
+        try {
+            System.out.println("Saving trainers to file...");
+            FileWriter fileWriter = new FileWriter("Usuarios.json");
+            Gson gson = new GsonBuilder()
+                    .setPrettyPrinting()
+                    .create();
+            gson.toJson(trainerList, fileWriter);
+            fileWriter.close();
+            System.out.println("Trainers successfully saved to file");
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw new RuntimeException("Error managing the file", e);
+        }
+    }
+
 }
