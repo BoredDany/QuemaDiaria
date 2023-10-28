@@ -1,6 +1,7 @@
 package ing.soft.quemadiariaproject.Model.UseCases;
 
 import ing.soft.quemadiariaproject.Model.DTOs.TrainerDTO;
+import ing.soft.quemadiariaproject.Model.Domain.Entities.Credential;
 import ing.soft.quemadiariaproject.Model.Domain.Entities.Trainer;
 import ing.soft.quemadiariaproject.Model.Domain.Exceptions.TrainerException;
 import ing.soft.quemadiariaproject.Model.UseCases.Persistence.Persistence;
@@ -12,6 +13,7 @@ public class Register {
     public Register(Persistence persistence){
         this.persistence = persistence;
     }
+
     public void verifyFullFields(Trainer trainer) throws TrainerException {
         if(trainer.getName().isEmpty() || trainer.getIdentification().isEmpty()
                 || trainer.getEmail().isEmpty() || trainer.getCredentials().getUsername().isEmpty()
@@ -42,6 +44,13 @@ public class Register {
             throw new TrainerException("Account already exists");
         }
     }
+    public void verifyUsername(String username) throws TrainerException {
+        for(Trainer t: persistence.consultListTrainers()){
+            if(t.getCredentials().getUsername().equals(username)){
+                throw new TrainerException("Account already exists");
+            }
+        }
+    }
     public void registerTrainer(Trainer trainer) throws TrainerException {
         verifyFullFields(trainer);
         verifyEmail(trainer.getEmail());
@@ -54,8 +63,22 @@ public class Register {
         for (int i = 0; i < trainers.size(); i++) {
             Trainer t = trainers.get(i);
             if (t.getCredentials().getUsername().equals(trainerDTO.getUsername())) {
-                Trainer trainerModified = new Trainer(trainerDTO.getName(), trainerDTO.getIdentification(), trainerDTO.getEmail(),
-                        trainerDTO.getSocialMedia(), t.getCredentials(),
+                Trainer trainerModified = new Trainer(trainerDTO.getName(), trainerDTO.getIdentification(),
+                        trainerDTO.getEmail(), trainerDTO.getSocialMedia(), t.getCredentials(),
+                        trainerDTO.getSpeciality());
+                trainers.set(i, trainerModified);
+            }
+        }
+        persistence.updateFile(trainers);
+    }
+    public void updateUsername(String oldUsername, TrainerDTO trainerDTO){
+        List<Trainer> trainers = persistence.consultListTrainers();
+        for (int i = 0; i < trainers.size(); i++) {
+            Trainer t = trainers.get(i);
+            if (t.getCredentials().getUsername().equals(oldUsername)) {
+                Credential newCredential = new Credential(trainerDTO.getUsername(), t.getCredentials().getPassword());
+                Trainer trainerModified = new Trainer(trainerDTO.getName(), trainerDTO.getIdentification(),
+                        trainerDTO.getEmail(), trainerDTO.getSocialMedia(), newCredential,
                         trainerDTO.getSpeciality());
                 trainers.set(i, trainerModified);
             }

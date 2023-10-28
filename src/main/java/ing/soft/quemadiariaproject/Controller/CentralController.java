@@ -33,5 +33,12 @@ public class CentralController {
         stage.setScene(scene);
         stage.show();
     }
+    public void openScreen(String file) throws IOException{
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource(file));
+        Stage newStage = new Stage();
+        Scene scene = new Scene(fxmlLoader.load());
+        newStage.setScene(scene);
+        newStage.show();
+    }
 
 }

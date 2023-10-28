@@ -41,12 +41,15 @@ public class TrainerPrincipalController {
     }
 
     public void goToStatistics(MouseEvent actionEvent) {
+
     }
 
     public void goToWallet(MouseEvent actionEvent) {
+
     }
 
     public void goToPrograms(MouseEvent actionEvent) {
+
     }
 
     public void goAccount(MouseEvent mouseEvent) {

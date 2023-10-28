@@ -23,7 +23,6 @@ public class TrainerAccountController {
     public TextField specialityField;
     public TextField usernameField;
     public TextField newSocialmediaField;
-    public TextField passwordField;
     public TextField newCertifiateField;
     public ListView socialmediaList;
     public ListView certificatesList;
@@ -36,6 +35,7 @@ public class TrainerAccountController {
     public Button buttonAddSocialmedia;
     public Button buttonAddCertificate;
     public Button buttonChangePassword;
+    public Button buttonRemoveSocialmedia;
 
     private TrainerFacade modifyData = new TrainerServices();
     public void initialize(){
@@ -100,9 +100,6 @@ public class TrainerAccountController {
         }
     }
 
-    public void changeUsername(ActionEvent actionEvent) {
-    }
-
     public void addSocialmedia(ActionEvent actionEvent) {
         String newSocialmedia = newSocialmediaField.getText();
         try{
@@ -113,10 +110,30 @@ public class TrainerAccountController {
             System.out.println(e.getMessage());
         }
     }
-
-    public void addCertificate(ActionEvent actionEvent) {
+    public void removeSocialmedia(ActionEvent actionEvent) {
+        String deleteSocialmedia = (String) socialmediaList.getSelectionModel().getSelectedItem();
+        modifyData.removeSocialmedia(deleteSocialmedia, CentralController.getTrainerDTO());
+        initialize();
+        System.out.println("Socialmedia deleted");
     }
+    public void addCertificate(ActionEvent actionEvent) {
 
-    public void changePassword(ActionEvent actionEvent) {
+    }
+    public void changeUsername(ActionEvent actionEvent) {
+        String newUsername = usernameField.getText();
+        try{
+            modifyData.modifyUsername(newUsername, CentralController.getTrainerDTO());
+            initialize();
+            System.out.println("Username changed");
+        }catch(TrainerException e){
+            System.out.println(e.getMessage());
+        }
+    }
+    public void goToChangePassword(ActionEvent actionEvent) {
+        try{
+            CentralController.getInstance().openScreen("ChangePassword.fxml");
+        }catch(IOException e){
+            System.out.println(e.getMessage());
+        }
     }
 }

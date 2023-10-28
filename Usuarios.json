@@ -1,17 +1,17 @@
 [
   {
-    "name": "ANA1",
+    "name": "q",
     "identification": "12345678910",
     "email": "ana@d",
     "socialMedia": [
       "ana.aba",
-      "anita.jaja",
-      "ANA1.JAJA"
+      "anita.jaja"
     ],
     "credentials": {
-      "username": "ana",
+      "username": "ana1",
       "password": "Ana123*123#"
-    }
+    },
+    "speciality": "SOME"
   },
   {
     "name": "ANA2",

@@ -33,14 +33,12 @@ public class TrainerServices implements TrainerFacade {
 
     @Override
     public void modifyID(String id, TrainerDTO trainerDTO) throws TrainerException {
-        register.verifyIdentification(id);
         TrainerDTO updatedTrainer = modifydata.modifyID(id, trainerDTO);
         register.updateTrainer(updatedTrainer);
     }
 
     @Override
     public void modifyEmail(String email, TrainerDTO trainerDTO) throws TrainerException {
-        register.verifyEmail(email);
         TrainerDTO updatedTrainer = modifydata.modifyEmail(email, trainerDTO);
         register.updateTrainer(updatedTrainer);
     }
@@ -55,5 +53,18 @@ public class TrainerServices implements TrainerFacade {
     public void addSocialmedia(String socialmedia, TrainerDTO trainerDTO) throws TrainerException {
         TrainerDTO updatedTrainer = modifydata.addSocialmedia(socialmedia, trainerDTO);
         register.updateTrainer(updatedTrainer);
+    }
+
+    @Override
+    public void removeSocialmedia(String socialmedia, TrainerDTO trainerDTO) {
+        modifydata.removeSocialmedia(socialmedia, trainerDTO);
+        register.updateTrainer(trainerDTO);
+    }
+
+    @Override
+    public void modifyUsername(String username, TrainerDTO trainerDTO) throws TrainerException {
+        String oldUsername = trainerDTO.getUsername();
+        modifydata.modifyUsername(username, trainerDTO);
+        register.updateUsername(oldUsername, trainerDTO);
     }
 }

@@ -12,4 +12,6 @@ public interface TrainerFacade {
     void modifyEmail(String email, TrainerDTO trainerDTO) throws TrainerException;
     void modifySpeciality(String speciality, TrainerDTO trainerDTO) throws TrainerException;
     void addSocialmedia(String socialmedia, TrainerDTO trainerDTO) throws TrainerException;
+    void removeSocialmedia(String socialmedia, TrainerDTO trainerDTO);
+    void modifyUsername(String username, TrainerDTO trainerDTO) throws TrainerException;
 }
