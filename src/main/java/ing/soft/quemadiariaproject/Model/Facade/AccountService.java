@@ -9,7 +9,7 @@ import ing.soft.quemadiariaproject.Model.UseCases.ModifyPersonalInfo;
 import ing.soft.quemadiariaproject.Model.UseCases.Persistence.Persistence;
 import ing.soft.quemadiariaproject.Model.UseCases.Register;
 
-public class TrainerServices implements TrainerFacade {
+public class AccountService implements AccountFacade {
     private Persistence persistence = new FilePersistence();
     private Login login = new Login(persistence);
     private Register register = new Register(persistence);

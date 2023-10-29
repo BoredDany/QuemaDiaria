@@ -1,9 +1,8 @@
 package ing.soft.quemadiariaproject.Controller;
 
-import ing.soft.quemadiariaproject.Model.Domain.Entities.Trainer;
 import ing.soft.quemadiariaproject.Model.Domain.Exceptions.TrainerException;
-import ing.soft.quemadiariaproject.Model.Facade.TrainerFacade;
-import ing.soft.quemadiariaproject.Model.Facade.TrainerServices;
+import ing.soft.quemadiariaproject.Model.Facade.AccountFacade;
+import ing.soft.quemadiariaproject.Model.Facade.AccountService;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -18,7 +17,7 @@ public class ChangePasswordController {
     public TextField confirmationField;
     public Button buttonChangePassword;
     public Label errLabel;
-    private TrainerFacade modifyData = new TrainerServices();
+    private AccountFacade modifyData = new AccountService();
 
     public void changePassword(ActionEvent actionEvent) {
         String oldPassword = currentPsswordField.getText();

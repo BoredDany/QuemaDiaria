@@ -4,7 +4,7 @@ import ing.soft.quemadiariaproject.Model.DTOs.TrainerDTO;
 import ing.soft.quemadiariaproject.Model.Domain.Entities.Trainer;
 import ing.soft.quemadiariaproject.Model.Domain.Exceptions.TrainerException;
 
-public interface TrainerFacade {
+public interface AccountFacade {
     Trainer doLogin(String username, String password) throws TrainerException;
     void registerTrainer(Trainer trainer) throws TrainerException;
     void modifyName(String name, TrainerDTO trainerDTO) throws TrainerException;

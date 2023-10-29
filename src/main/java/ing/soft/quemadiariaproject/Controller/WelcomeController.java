@@ -3,8 +3,8 @@ package ing.soft.quemadiariaproject.Controller;
 import ing.soft.quemadiariaproject.Model.DTOs.TrainerDTO;
 import ing.soft.quemadiariaproject.Model.Domain.Entities.Trainer;
 import ing.soft.quemadiariaproject.Model.Domain.Exceptions.TrainerException;
-import ing.soft.quemadiariaproject.Model.Facade.TrainerFacade;
-import ing.soft.quemadiariaproject.Model.Facade.TrainerServices;
+import ing.soft.quemadiariaproject.Model.Facade.AccountFacade;
+import ing.soft.quemadiariaproject.Model.Facade.AccountService;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -23,7 +23,7 @@ public class WelcomeController {
     public void login(ActionEvent actionEvent) {
         String username = usernameField.getText();
         String password = passwordField.getText();
-        TrainerFacade login = new TrainerServices();
+        AccountFacade login = new AccountService();
         try{
             Trainer trainer = login.doLogin(username, password);
             TrainerDTO trainerDTO = new TrainerDTO(trainer.getName(),

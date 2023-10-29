@@ -1,9 +1,8 @@
 package ing.soft.quemadiariaproject.Controller;
 
-import ing.soft.quemadiariaproject.Model.Domain.Entities.Certificate;
 import ing.soft.quemadiariaproject.Model.Domain.Exceptions.TrainerException;
-import ing.soft.quemadiariaproject.Model.Facade.TrainerFacade;
-import ing.soft.quemadiariaproject.Model.Facade.TrainerServices;
+import ing.soft.quemadiariaproject.Model.Facade.AccountFacade;
+import ing.soft.quemadiariaproject.Model.Facade.AccountService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -13,7 +12,6 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.List;
 
 public class TrainerAccountController {
@@ -41,7 +39,7 @@ public class TrainerAccountController {
     public Label errSocialmediaLabel;
     public Label errAccInfoLabel;
 
-    private TrainerFacade modifyData = new TrainerServices();
+    private AccountFacade modifyData = new AccountService();
     public void initialize(){
         nameField.setText(CentralController.getTrainerDTO().getName());
         identificationField.setText(CentralController.getTrainerDTO().getIdentification());
