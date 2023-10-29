@@ -7,11 +7,13 @@ import ing.soft.quemadiariaproject.Model.Facade.TrainerFacade;
 import ing.soft.quemadiariaproject.Model.Facade.TrainerServices;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 import java.io.IOException;
 
 public class SignUpController {
+    public Label errrLabel;
     public TextField nameField;
     public TextField idField;
     public TextField emailField;
@@ -31,9 +33,9 @@ public class SignUpController {
             TrainerFacade register = new TrainerServices();
             Trainer newTrainer = new Trainer(name, identification, email, new Credential(username, password));
             register.registerTrainer(newTrainer);
-            System.out.println("Saved successfully: " + newTrainer);
+            errrLabel.setText("Saved successfully");
         }catch(TrainerException e){
-            System.out.println(e.getMessage());
+            errrLabel.setText(e.getMessage());
         }
     }
 

@@ -7,6 +7,7 @@ import ing.soft.quemadiariaproject.Model.Facade.TrainerFacade;
 import ing.soft.quemadiariaproject.Model.Facade.TrainerServices;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 import java.io.IOException;
@@ -17,6 +18,7 @@ public class WelcomeController {
     public TextField passwordField;
     public Button buttonLogin;
     public Button buttonSignUp;
+    public Label errLabel;
 
     public void login(ActionEvent actionEvent) {
         String username = usernameField.getText();
@@ -29,11 +31,10 @@ public class WelcomeController {
                     trainer.getSocialMedia(),
                     trainer.getCredentials().getUsername(),
                     trainer.getSpeciality());
-            System.out.println("Logged in: " + trainer);
             CentralController.setTrainerDTO(trainerDTO);
             CentralController.getInstance().loadScreen("TrainerPrincipal.fxml");
         }catch(TrainerException | IOException e){
-            System.out.println(e.getMessage());
+            errLabel.setText(e.getMessage());
         }
     }
 

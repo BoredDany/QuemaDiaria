@@ -56,7 +56,7 @@ public class TrainerServices implements TrainerFacade {
     }
 
     @Override
-    public void removeSocialmedia(String socialmedia, TrainerDTO trainerDTO) {
+    public void removeSocialmedia(String socialmedia, TrainerDTO trainerDTO) throws TrainerException {
         modifydata.removeSocialmedia(socialmedia, trainerDTO);
         register.updateTrainer(trainerDTO);
     }
@@ -66,5 +66,12 @@ public class TrainerServices implements TrainerFacade {
         String oldUsername = trainerDTO.getUsername();
         modifydata.modifyUsername(username, trainerDTO);
         register.updateUsername(oldUsername, trainerDTO);
+    }
+
+    @Override
+    public void modifyPassword(String previousPassword, String newPassword,
+                               String confirmNew, String username) throws TrainerException {
+        modifydata.modifyPasswordCheck(previousPassword, newPassword, confirmNew);
+        register.updatePassword(previousPassword, newPassword, confirmNew, username);
     }
 }

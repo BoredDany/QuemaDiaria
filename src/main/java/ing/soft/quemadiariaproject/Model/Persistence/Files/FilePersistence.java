@@ -18,7 +18,7 @@ public class FilePersistence implements Persistence {
     public void saveTrainer(Trainer trainer) {
         try {
             List<Trainer> usuarioList = consultListTrainers();
-            System.out.println("Registering trainer: " + trainer);
+            //System.out.println("Registering trainer: " + trainer);
             usuarioList.add(trainer);
             FileWriter fileWriter = new FileWriter("Usuarios.json");
             Gson gson = new GsonBuilder()
@@ -26,7 +26,7 @@ public class FilePersistence implements Persistence {
                     .create();
             gson.toJson(usuarioList, fileWriter);
             fileWriter.close();
-            System.out.println("Information successfully saved");
+            //System.out.println("Information successfully saved");
         } catch (Exception e) {
             e.printStackTrace();
             throw new RuntimeException("Error managing the file", e);
@@ -90,14 +90,14 @@ public class FilePersistence implements Persistence {
     @Override
     public void updateFile(List<Trainer> trainerList) {
         try {
-            System.out.println("Saving trainers to file...");
+            //System.out.println("Saving trainers to file...");
             FileWriter fileWriter = new FileWriter("Usuarios.json");
             Gson gson = new GsonBuilder()
                     .setPrettyPrinting()
                     .create();
             gson.toJson(trainerList, fileWriter);
             fileWriter.close();
-            System.out.println("Trainers successfully saved to file");
+            //System.out.println("Trainers successfully saved to file");
         } catch (IOException e) {
             e.printStackTrace();
             throw new RuntimeException("Error managing the file", e);

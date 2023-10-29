@@ -8,6 +8,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
@@ -36,6 +37,9 @@ public class TrainerAccountController {
     public Button buttonAddCertificate;
     public Button buttonChangePassword;
     public Button buttonRemoveSocialmedia;
+    public Label errPersonalInfoLabel;
+    public Label errSocialmediaLabel;
+    public Label errAccInfoLabel;
 
     private TrainerFacade modifyData = new TrainerServices();
     public void initialize(){
@@ -48,6 +52,11 @@ public class TrainerAccountController {
         ObservableList<String> observableItems = FXCollections.observableArrayList(items);
         socialmediaList.setItems(observableItems);
     }
+    public void cleanErrLabels(){
+        errPersonalInfoLabel.setText("");
+        errSocialmediaLabel.setText("");
+        errAccInfoLabel.setText("");
+    }
     public void goToPrincipalTrainer(ActionEvent actionEvent) {
         try {
             CentralController.getInstance().loadScreen("TrainerPrincipal.fxml");
@@ -59,62 +68,73 @@ public class TrainerAccountController {
     public void changeName(ActionEvent actionEvent) {
         String newName = nameField.getText();
         try{
+            cleanErrLabels();
             modifyData.modifyName(newName, CentralController.getTrainerDTO());
             initialize();
-            System.out.println("Name modified");
+            errPersonalInfoLabel.setText("Name saved");
         }catch(TrainerException e){
-            System.out.println(e.getMessage());
+            errPersonalInfoLabel.setText(e.getMessage());
         }
     }
 
     public void changeId(ActionEvent actionEvent) {
         String newId = identificationField.getText();
         try{
+            cleanErrLabels();
             modifyData.modifyID(newId, CentralController.getTrainerDTO());
             initialize();
-            System.out.println("ID modified");
+            errPersonalInfoLabel.setText("ID saved");
         }catch(TrainerException e){
-            System.out.println(e.getMessage());
+            errPersonalInfoLabel.setText(e.getMessage());
         }
     }
 
     public void changeEmail(ActionEvent actionEvent) {
         String newEmail = emailField.getText();
         try{
+            cleanErrLabels();
             modifyData.modifyEmail(newEmail, CentralController.getTrainerDTO());
             initialize();
-            System.out.println("Email modified");
+            errPersonalInfoLabel.setText("Email saved");
         }catch(TrainerException e){
-            System.out.println(e.getMessage());
+            errPersonalInfoLabel.setText(e.getMessage());
         }
     }
 
     public void changeSpeciality(ActionEvent actionEvent) {
         String newSpeciality = specialityField.getText();
         try{
+            cleanErrLabels();
             modifyData.modifySpeciality(newSpeciality, CentralController.getTrainerDTO());
             initialize();
-            System.out.println("Speciality modified");
+            errAccInfoLabel.setText("Speciality saved");
         }catch(TrainerException e){
-            System.out.println(e.getMessage());
+            errAccInfoLabel.setText(e.getMessage());
         }
     }
 
     public void addSocialmedia(ActionEvent actionEvent) {
         String newSocialmedia = newSocialmediaField.getText();
         try{
+            cleanErrLabels();
             modifyData.addSocialmedia(newSocialmedia, CentralController.getTrainerDTO());
             initialize();
-            System.out.println("Socialmedia added");
+            errSocialmediaLabel.setText("Socialmedia added");
         }catch(TrainerException e){
-            System.out.println(e.getMessage());
+            errSocialmediaLabel.setText(e.getMessage());
         }
     }
     public void removeSocialmedia(ActionEvent actionEvent) {
-        String deleteSocialmedia = (String) socialmediaList.getSelectionModel().getSelectedItem();
-        modifyData.removeSocialmedia(deleteSocialmedia, CentralController.getTrainerDTO());
-        initialize();
-        System.out.println("Socialmedia deleted");
+        try {
+            cleanErrLabels();
+            String deleteSocialmedia = (String) socialmediaList.getSelectionModel().getSelectedItem();
+            modifyData.removeSocialmedia(deleteSocialmedia, CentralController.getTrainerDTO());
+            initialize();
+            errSocialmediaLabel.setText("Socialmedia deleted");
+        }catch(TrainerException e){
+            errSocialmediaLabel.setText(e.getMessage());
+        }
+
     }
     public void addCertificate(ActionEvent actionEvent) {
 
@@ -122,11 +142,12 @@ public class TrainerAccountController {
     public void changeUsername(ActionEvent actionEvent) {
         String newUsername = usernameField.getText();
         try{
+            cleanErrLabels();
             modifyData.modifyUsername(newUsername, CentralController.getTrainerDTO());
             initialize();
-            System.out.println("Username changed");
+            errAccInfoLabel.setText("Username saved");
         }catch(TrainerException e){
-            System.out.println(e.getMessage());
+            errAccInfoLabel.setText(e.getMessage());
         }
     }
     public void goToChangePassword(ActionEvent actionEvent) {

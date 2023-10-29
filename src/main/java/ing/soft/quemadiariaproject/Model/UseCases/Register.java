@@ -85,4 +85,25 @@ public class Register {
         }
         persistence.updateFile(trainers);
     }
+    public void updatePassword(String previousPassword, String newPassword, String confirmNew,
+                               String username) throws TrainerException {
+        List<Trainer> trainers = persistence.consultListTrainers();
+        for (int i = 0; i < trainers.size(); i++) {
+            Trainer t = trainers.get(i);
+            if (t.getCredentials().getUsername().equals(username)) {
+                if(!t.getCredentials().verifyCredentials(username, previousPassword)){
+                    throw new TrainerException("Credentials are not correct");
+                }
+                if(!newPassword.equals(confirmNew)){
+                    throw new TrainerException("Confirmation is not correct");
+                }
+                Credential newCredential = new Credential(t.getCredentials().getUsername(), newPassword);
+                Trainer trainerModified = new Trainer(t.getName(), t.getIdentification(),
+                        t.getEmail(), t.getSocialMedia(), newCredential,
+                        t.getSpeciality());
+                trainers.set(i, trainerModified);
+            }
+        }
+        persistence.updateFile(trainers);
+    }
 }

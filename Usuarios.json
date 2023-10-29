@@ -1,17 +1,14 @@
 [
   {
-    "name": "q",
-    "identification": "12345678910",
+    "name": "ana1",
+    "identification": "12345678",
     "email": "ana@d",
-    "socialMedia": [
-      "ana.aba",
-      "anita.jaja"
-    ],
+    "socialMedia": [],
     "credentials": {
       "username": "ana1",
-      "password": "Ana123*123#"
+      "password": "asasASAS21#"
     },
-    "speciality": "SOME"
+    "speciality": "SOMEES"
   },
   {
     "name": "ANA2",
@@ -29,6 +26,15 @@
     "credentials": {
       "username": "ana23",
       "password": "a*47Ys3$"
+    }
+  },
+  {
+    "name": "a",
+    "identification": "a",
+    "email": "a@f.com",
+    "credentials": {
+      "username": "a",
+      "password": "a123#$LS"
     }
   }
 ]

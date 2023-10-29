@@ -1,6 +1,7 @@
 package ing.soft.quemadiariaproject.Model.UseCases;
 
 import ing.soft.quemadiariaproject.Model.DTOs.TrainerDTO;
+import ing.soft.quemadiariaproject.Model.Domain.Entities.Credential;
 import ing.soft.quemadiariaproject.Model.Domain.Exceptions.TrainerException;
 import ing.soft.quemadiariaproject.Model.Persistence.Files.FilePersistence;
 
@@ -26,6 +27,7 @@ public class ModifyPersonalInfo {
     public TrainerDTO modifyName(String name, TrainerDTO trainerDTO) throws TrainerException {
         verifyEmptyField(name);
         trainerDTO.setName(name);
+        register.updateTrainer(trainerDTO);
         return trainerDTO;
     }
     public TrainerDTO modifyID(String id, TrainerDTO trainerDTO) throws TrainerException {
@@ -37,7 +39,9 @@ public class ModifyPersonalInfo {
     public TrainerDTO modifyEmail(String email, TrainerDTO trainerDTO) throws TrainerException {
         verifyEmptyField(email);
         register.verifyEmail(email);
-        register.verifyAccount(trainerDTO.getUsername(), email);
+        if(!email.equals(trainerDTO.getEmail())){
+            register.verifyAccount(trainerDTO.getUsername(), email);
+        }
         trainerDTO.setEmail(email);
         return trainerDTO;
     }
@@ -57,13 +61,25 @@ public class ModifyPersonalInfo {
         trainerDTO.setSocialMedia(socialmediaT);
         return trainerDTO;
     }
-    public void removeSocialmedia(String socialmedia, TrainerDTO trainerDTO) {
+    public void removeSocialmedia(String socialmedia, TrainerDTO trainerDTO) throws TrainerException {
+        if(socialmedia == null){
+            throw new TrainerException("Any socialmedia selected");
+        }
         trainerDTO.getSocialMedia().remove(socialmedia);
     }
     public TrainerDTO modifyUsername(String username, TrainerDTO trainerDTO) throws TrainerException {
         verifyEmptyField(username);
-        register.verifyUsername(username);
+        if(!username.equals(trainerDTO.getUsername())){
+            register.verifyUsername(username);
+        }
         trainerDTO.setUsername(username);
         return trainerDTO;
+    }
+    public void modifyPasswordCheck(String previousPassword, String newPassword, String confirmNew)
+            throws TrainerException {
+        verifyEmptyField(previousPassword);
+        verifyEmptyField(newPassword);
+        verifyEmptyField(confirmNew);
+        register.verifyPassword(newPassword);
     }
 }
