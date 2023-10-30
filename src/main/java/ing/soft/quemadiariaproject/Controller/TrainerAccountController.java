@@ -13,6 +13,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -39,8 +40,6 @@ public class TrainerAccountController {
     public Button buttonAddCertificate;
     public Button buttonChangePassword;
     public Button buttonRemoveSocialmedia;
-    public Button buttonEditCertif;
-    public Button buttonDeleteCertif;
     public Label errPersonalInfoLabel;
     public Label errSocialmediaLabel;
     public Label errAccInfoLabel;
@@ -58,7 +57,7 @@ public class TrainerAccountController {
         certificateFacade.consultByUsername(CentralController.getTrainerDTO().getUsername());
         List<String>items = new ArrayList<>();
         for(CertificateDTO c: CentralController.getCertificatesDTO()){
-            items.add(c.getTitle()+ "-" + c.getInstitution());
+            items.add(c.getTitle()+ "-" + c.getInstitution() + "-" + c.getExpeditionDate());
         }
         ObservableList<String> observableItems = FXCollections.observableArrayList(items);
         certificatesList.setItems(observableItems);
@@ -177,17 +176,24 @@ public class TrainerAccountController {
         }
     }
 
-    public void goToEditCertificate(ActionEvent actionEvent) {
-    }
-
-    public void deleteCertif(ActionEvent actionEvent) {
-    }
-
     public void addCertificate(ActionEvent actionEvent) {
         try{
             CentralController.getInstance().loadScreen("Certificate.fxml");
         }catch(IOException e){
             System.out.println(e.getMessage());
         }
+    }
+    public void openCertificate(MouseEvent mouseEvent) {
+        String username = CentralController.getTrainerDTO().getUsername();
+        String infoCert = (String) certificatesList.getSelectionModel().getSelectedItem();
+        String[] dataCert = infoCert.split("-");
+        String title = dataCert[0];
+        String institution = dataCert[1];
+        String expDate = dataCert[1];
+        CertificateDTO certificateDTO = certificateFacade.getCertificate(username, title, institution, expDate);
+        CentralController.setCertificateDTO(certificateDTO);
+        System.out.println(title + "-" + institution + "-" + expDate);
+        System.out.println(certificateDTO);
+        //CentralController.getInstance().loadScreen("CertificateEdit.fxml");
     }
 }

@@ -5,12 +5,12 @@ import java.util.Date;
 public class CertificateDTO {
     private String TrainerUsername;
     private String institution;
-    private Date expeditionDate;
+    private String expeditionDate;
     private String description;
     private String link;
     private String title;
 
-    public CertificateDTO(String trainerUsername, String institution, Date expeditionDate,
+    public CertificateDTO(String trainerUsername, String institution, String expeditionDate,
                           String description, String link, String title) {
         TrainerUsername = trainerUsername;
         this.institution = institution;
@@ -28,7 +28,7 @@ public class CertificateDTO {
         return institution;
     }
 
-    public Date getExpeditionDate() {
+    public String getExpeditionDate() {
         return expeditionDate;
     }
 

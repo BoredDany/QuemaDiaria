@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: FFFF;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ing.soft.quemadiariaproject.Controller.TrainerAccountController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: FFFF;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ing.soft.quemadiariaproject.Controller.TrainerAccountController">
    <children>
       <Button fx:id="buttonBack" layoutX="22.0" layoutY="21.0" mnemonicParsing="false" onAction="#goToPrincipalTrainer" text="Back" />
       <Label layoutX="36.0" layoutY="60.0" text="PERSONAL INFORMATION" />
@@ -18,13 +15,13 @@
       <Label layoutX="36.0" layoutY="164.0" text="Email:" />
       <TextField fx:id="emailField" layoutX="77.0" layoutY="160.0" />
       <Label layoutX="330.0" layoutY="86.0" text="Social meDia:" />
-      <Label layoutX="332.0" layoutY="245.0" text="Certificates:" />
+      <Label layoutX="338.0" layoutY="245.0" text="Certificates:" />
       <Label layoutX="36.0" layoutY="265.0" text="Speciality:" />
       <TextField fx:id="specialityField" layoutX="94.0" layoutY="261.0" prefHeight="25.0" prefWidth="132.0" />
       <Label layoutX="36.0" layoutY="300.0" text="Username:" />
       <TextField fx:id="usernameField" layoutX="94.0" layoutY="296.0" prefHeight="25.0" prefWidth="132.0" />
       <ListView fx:id="socialmediaList" layoutX="331.0" layoutY="103.0" prefHeight="56.0" prefWidth="202.0" />
-      <ListView fx:id="certificatesList" layoutX="331.0" layoutY="262.0" prefHeight="56.0" prefWidth="202.0" />
+      <ListView fx:id="certificatesList" layoutX="337.0" layoutY="262.0" onMouseClicked="#openCertificate" prefHeight="56.0" prefWidth="202.0" />
       <Button fx:id="buttonChangeName" layoutX="233.0" layoutY="90.0" mnemonicParsing="false" onAction="#changeName" prefHeight="25.0" prefWidth="62.0" text="Change" />
       <Button fx:id="buttonChangeId" layoutX="233.0" layoutY="125.0" mnemonicParsing="false" onAction="#changeId" prefHeight="25.0" prefWidth="62.0" text="Change" />
       <Button fx:id="buttonChangeEmail" layoutX="233.0" layoutY="160.0" mnemonicParsing="false" onAction="#changeEmail" prefHeight="25.0" prefWidth="62.0" text="Change" />
@@ -32,14 +29,12 @@
       <Button fx:id="buttonChangeUsername" layoutX="233.0" layoutY="296.0" mnemonicParsing="false" onAction="#changeUsername" prefHeight="25.0" prefWidth="62.0" text="Change" />
       <TextField fx:id="newSocialmediaField" layoutX="331.0" layoutY="164.0" prefHeight="25.0" prefWidth="164.0" />
       <Button fx:id="buttonAddSocialmedia" layoutX="502.0" layoutY="164.0" mnemonicParsing="false" onAction="#addSocialmedia" prefHeight="25.0" prefWidth="31.0" text="+" />
-      <Button fx:id="buttonAddCertificate" layoutX="330.0" layoutY="360.0" mnemonicParsing="false" onAction="#addCertificate" prefHeight="25.0" prefWidth="104.0" text="Add certificate" />
+      <Button fx:id="buttonAddCertificate" layoutX="336.0" layoutY="360.0" mnemonicParsing="false" onAction="#addCertificate" prefHeight="25.0" prefWidth="104.0" text="Add certificate" />
       <Button fx:id="buttonChangePassword" layoutX="34.0" layoutY="362.0" mnemonicParsing="false" onAction="#goToChangePassword" prefHeight="25.0" prefWidth="121.0" text="Change password" />
       <Button fx:id="buttonRemoveSocialmedia" layoutX="541.0" layoutY="164.0" mnemonicParsing="false" onAction="#removeSocialmedia" prefHeight="25.0" prefWidth="31.0" text="-" />
       <Label fx:id="errPersonalInfoLabel" layoutX="36.0" layoutY="193.0" prefHeight="17.0" prefWidth="187.0" textFill="#bf2727" />
       <Label fx:id="errSocialmediaLabel" layoutX="332.0" layoutY="212.0" prefHeight="17.0" prefWidth="187.0" textFill="#bf2727" />
       <Label fx:id="errAccInfoLabel" layoutX="38.0" layoutY="328.0" prefHeight="17.0" prefWidth="187.0" textFill="#bf2727" />
-      <Label fx:id="errCertifLabel" layoutX="337.0" layoutY="330.0" prefHeight="17.0" prefWidth="187.0" textFill="#bf2727" />
-      <Button fx:id="buttonEditCertif" layoutX="443.0" layoutY="360.0" mnemonicParsing="false" onAction="#goToEditCertificate" text="Edit" />
-      <Button fx:id="buttonDeleteCertif" layoutX="493.0" layoutY="360.0" mnemonicParsing="false" onAction="#deleteCertif" text="Delete" />
+      <Label fx:id="errCertifLabel" layoutX="343.0" layoutY="330.0" prefHeight="17.0" prefWidth="187.0" textFill="#bf2727" />
    </children>
 </AnchorPane>

@@ -24,7 +24,7 @@ public class RegisterCert {
             throw new TrainerException("Missing information");
         }
     }
-    public void verifyCertRegistered(String username, String institution, Date expeditionDate, String title) throws TrainerException {
+    public void verifyCertRegistered(String username, String institution, String expeditionDate, String title) throws TrainerException {
         if(registerCertificate.isRegistered(username, institution, expeditionDate, title)){
             throw new TrainerException("Certificate already registered");
         }

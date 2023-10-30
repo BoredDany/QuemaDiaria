@@ -16,6 +16,7 @@ public class CentralController {
     private static Stage stage;
     private static TrainerDTO trainerDTO;
     private static List<CertificateDTO> certificatesDTO;
+    private static CertificateDTO certificateDTO;
     public static CentralController getInstance(){
         if(centralController == null){
             stage = new Stage();
@@ -23,6 +24,14 @@ public class CentralController {
             trainerDTO = new TrainerDTO();
         }
         return centralController;
+    }
+
+    public static CertificateDTO getCertificateDTO() {
+        return certificateDTO;
+    }
+
+    public static void setCertificateDTO(CertificateDTO certificateDTO) {
+        CentralController.certificateDTO = certificateDTO;
     }
 
     public static List<CertificateDTO> getCertificatesDTO() {

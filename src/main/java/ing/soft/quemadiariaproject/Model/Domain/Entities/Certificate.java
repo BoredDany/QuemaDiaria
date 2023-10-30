@@ -5,12 +5,12 @@ import java.util.Date;
 public class Certificate {
     private String TrainerUsername;
     private String institution;
-    private Date expeditionDate;
+    private String expeditionDate;
     private String description;
     private String link;
     private String title;
 
-    public Certificate(String trainerUsername, String institution, Date expeditionDate,
+    public Certificate(String trainerUsername, String institution, String expeditionDate,
                        String description, String link, String title) {
         TrainerUsername = trainerUsername;
         this.institution = institution;
@@ -19,7 +19,7 @@ public class Certificate {
         this.link = link;
         this.title = title;
     }
-    public boolean verifyCertificate(String trainerUsername, String institution, Date expeditionDate, String title){
+    public boolean verifyCertificate(String trainerUsername, String institution, String expeditionDate, String title){
         return this.TrainerUsername.equals(trainerUsername) && this.institution.equals(institution)
                 && this.expeditionDate.equals(expeditionDate) && this.title.equals(title);
     }
@@ -35,7 +35,7 @@ public class Certificate {
         return institution;
     }
 
-    public Date getExpeditionDate() {
+    public String getExpeditionDate() {
         return expeditionDate;
     }
 

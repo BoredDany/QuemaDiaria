@@ -1,6 +1,7 @@
 package ing.soft.quemadiariaproject.Model.Persistence.Files;
 
 import com.google.gson.*;
+import ing.soft.quemadiariaproject.Model.DTOs.CertificateDTO;
 import ing.soft.quemadiariaproject.Model.Domain.Entities.Certificate;
 import ing.soft.quemadiariaproject.Model.UseCases.Persistence.PersistenceCert;
 
@@ -78,7 +79,7 @@ public class FilePersistenceCert implements PersistenceCert {
     }
 
     @Override
-    public boolean isRegistered(String username, String institution, Date expeditionDate, String title) {
+    public boolean isRegistered(String username, String institution, String expeditionDate, String title) {
         return consultListCertificates().
                 stream().
                 filter(certificate -> certificate.verifyCertificate(username,
@@ -102,5 +103,20 @@ public class FilePersistenceCert implements PersistenceCert {
             e.printStackTrace();
             throw new RuntimeException("Error managing the file", e);
         }
+    }
+
+    @Override
+    public CertificateDTO consult(String username, String title, String institution, String expDate) {
+        for(Certificate c: consultByUsername(username)){
+            if(c.getTitle().equals(title) &&
+                    c.getExpeditionDate().equals(expDate) &&
+                    c.getInstitution().equals(institution)){
+                CertificateDTO certificateDTO = new CertificateDTO(username,
+                        c.getInstitution(), c.getExpeditionDate(),
+                        c.getDescription(), c.getLink(), c.getTitle());
+                return certificateDTO;
+            }
+        }
+        return null;
     }
 }

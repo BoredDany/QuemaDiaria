@@ -7,4 +7,5 @@ import ing.soft.quemadiariaproject.Model.Domain.Exceptions.TrainerException;
 public interface CertificateFacade {
     void saveCertificate(CertificateDTO certificate) throws TrainerException;
     void consultByUsername(String username);
+    CertificateDTO getCertificate(String username, String title, String institution, String expDate);
 }

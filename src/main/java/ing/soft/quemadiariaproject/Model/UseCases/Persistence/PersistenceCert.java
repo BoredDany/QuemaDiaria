@@ -10,6 +10,7 @@ public interface PersistenceCert {
     void saveCertificate(Certificate certificate);
     List<Certificate> consultListCertificates();
     List<Certificate> consultByUsername(String username);
-    boolean isRegistered(String username, String institution, Date expeditionDate, String title);
+    boolean isRegistered(String username, String institution, String expeditionDate, String title);
     void updateFile(List<Certificate> certificateList);
+    CertificateDTO consult(String username, String title, String institution, String expDate);
 }

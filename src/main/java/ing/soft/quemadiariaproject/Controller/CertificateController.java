@@ -39,19 +39,21 @@ public class CertificateController {
             e.printStackTrace();
         }
     }
-    public Date getDate(){
-        Date date = null;
+    public String getDate(){
+        String date = null;
         if(dateField.getValue() != null){
             LocalDate selectedDate = dateField.getValue();
-            Instant selectedInstant = selectedDate.atStartOfDay(ZoneId.systemDefault()).toInstant();
-            date = Date.from(selectedInstant);
+            int day = selectedDate.getDayOfMonth();
+            int month = selectedDate.getMonthValue();
+            int year = selectedDate.getYear();
+            date = day + " " + month + " " + year;
         }
         return date;
     }
     public CertificateDTO getCertInfo(){
         String username = CentralController.getTrainerDTO().getUsername();
         String institution = institutionField.getText();
-        Date expDate = getDate();
+        String expDate = getDate();
         String description = descriptionField.getText();
         String link = linkField.getText();
         String title = titleField.getText();

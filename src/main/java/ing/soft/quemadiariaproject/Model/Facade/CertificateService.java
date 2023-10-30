@@ -17,4 +17,9 @@ public class CertificateService implements CertificateFacade{
     public void consultByUsername(String username){
         certificateRegister.getTrainerCerts(username);
     }
+
+    @Override
+    public CertificateDTO getCertificate(String username, String title, String institution, String expDate) {
+        return persistence.consult(username, title, institution, expDate);
+    }
 }
