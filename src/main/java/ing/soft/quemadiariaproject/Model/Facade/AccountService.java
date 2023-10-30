@@ -1,6 +1,7 @@
 package ing.soft.quemadiariaproject.Model.Facade;
 
 import ing.soft.quemadiariaproject.Model.DTOs.TrainerDTO;
+import ing.soft.quemadiariaproject.Model.Domain.Entities.Credential;
 import ing.soft.quemadiariaproject.Model.Domain.Entities.Trainer;
 import ing.soft.quemadiariaproject.Model.Domain.Exceptions.TrainerException;
 import ing.soft.quemadiariaproject.Model.Persistence.Files.FilePersistence;
@@ -16,13 +17,13 @@ public class AccountService implements AccountFacade {
     private ModifyPersonalInfo modifydata = new ModifyPersonalInfo();
 
     @Override
-    public Trainer doLogin(String username, String password) throws TrainerException {
-        return login.doLogin(username, password);
+    public void doLogin(String username, String password) throws TrainerException {
+        login.doLogin(username, password);
     }
 
     @Override
-    public void registerTrainer(Trainer trainer) throws TrainerException {
-        register.registerTrainer(trainer);
+    public void registerTrainer(TrainerDTO trainerDTO, String password) throws TrainerException {
+        register.registerTrainer(trainerDTO, password);
     }
 
     @Override

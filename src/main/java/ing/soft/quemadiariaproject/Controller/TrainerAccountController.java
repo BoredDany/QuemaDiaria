@@ -1,8 +1,11 @@
 package ing.soft.quemadiariaproject.Controller;
 
+import ing.soft.quemadiariaproject.Model.DTOs.CertificateDTO;
 import ing.soft.quemadiariaproject.Model.Domain.Exceptions.TrainerException;
 import ing.soft.quemadiariaproject.Model.Facade.AccountFacade;
 import ing.soft.quemadiariaproject.Model.Facade.AccountService;
+import ing.soft.quemadiariaproject.Model.Facade.CertificateFacade;
+import ing.soft.quemadiariaproject.Model.Facade.CertificateService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -12,6 +15,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class TrainerAccountController {
@@ -35,25 +39,44 @@ public class TrainerAccountController {
     public Button buttonAddCertificate;
     public Button buttonChangePassword;
     public Button buttonRemoveSocialmedia;
+    public Button buttonEditCertif;
+    public Button buttonDeleteCertif;
     public Label errPersonalInfoLabel;
     public Label errSocialmediaLabel;
     public Label errAccInfoLabel;
-
+    public Label errCertifLabel;
     private AccountFacade modifyData = new AccountService();
+    private CertificateFacade certificateFacade = new CertificateService();
+    public void getSocialmedia(){
+        if(CentralController.getTrainerDTO().getSocialMedia() != null){
+            List<String>items = CentralController.getTrainerDTO().getSocialMedia();
+            ObservableList<String> observableItems = FXCollections.observableArrayList(items);
+            socialmediaList.setItems(observableItems);
+        }
+    }
+    public void getCertificates(){
+        certificateFacade.consultByUsername(CentralController.getTrainerDTO().getUsername());
+        List<String>items = new ArrayList<>();
+        for(CertificateDTO c: CentralController.getCertificatesDTO()){
+            items.add(c.getTitle()+ "-" + c.getInstitution());
+        }
+        ObservableList<String> observableItems = FXCollections.observableArrayList(items);
+        certificatesList.setItems(observableItems);
+    }
     public void initialize(){
         nameField.setText(CentralController.getTrainerDTO().getName());
         identificationField.setText(CentralController.getTrainerDTO().getIdentification());
         emailField.setText(CentralController.getTrainerDTO().getEmail());
         specialityField.setText(CentralController.getTrainerDTO().getSpeciality());
         usernameField.setText(CentralController.getTrainerDTO().getUsername());
-        List<String>items = CentralController.getTrainerDTO().getSocialMedia();
-        ObservableList<String> observableItems = FXCollections.observableArrayList(items);
-        socialmediaList.setItems(observableItems);
+        getSocialmedia();
+        getCertificates();
     }
     public void cleanErrLabels(){
         errPersonalInfoLabel.setText("");
         errSocialmediaLabel.setText("");
         errAccInfoLabel.setText("");
+        errCertifLabel.setText("");
     }
     public void goToPrincipalTrainer(ActionEvent actionEvent) {
         try {
@@ -134,9 +157,7 @@ public class TrainerAccountController {
         }
 
     }
-    public void addCertificate(ActionEvent actionEvent) {
 
-    }
     public void changeUsername(ActionEvent actionEvent) {
         String newUsername = usernameField.getText();
         try{
@@ -151,6 +172,20 @@ public class TrainerAccountController {
     public void goToChangePassword(ActionEvent actionEvent) {
         try{
             CentralController.getInstance().openScreen("ChangePassword.fxml");
+        }catch(IOException e){
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void goToEditCertificate(ActionEvent actionEvent) {
+    }
+
+    public void deleteCertif(ActionEvent actionEvent) {
+    }
+
+    public void addCertificate(ActionEvent actionEvent) {
+        try{
+            CentralController.getInstance().loadScreen("Certificate.fxml");
         }catch(IOException e){
             System.out.println(e.getMessage());
         }

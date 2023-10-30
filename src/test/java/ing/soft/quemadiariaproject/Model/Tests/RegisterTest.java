@@ -1,5 +1,6 @@
 package ing.soft.quemadiariaproject.Model.Tests;
 
+import ing.soft.quemadiariaproject.Model.DTOs.TrainerDTO;
 import ing.soft.quemadiariaproject.Model.Domain.Entities.Credential;
 import ing.soft.quemadiariaproject.Model.Domain.Entities.Trainer;
 import ing.soft.quemadiariaproject.Model.Domain.Exceptions.TrainerException;
@@ -14,25 +15,25 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 class RegisterTest  {
     private Register register;
-    private Trainer trainer;
-    private Credential credential;
+    private TrainerDTO trainer;
+    private String password;
 
     @BeforeEach
     void setUp() {
         this.register = new Register(new FilePersistence());
-        this.credential = new Credential("", "");
-        this.trainer = new Trainer("", "", "",credential);
+        this.password = "";
+        this.trainer = new TrainerDTO("", "", "","");
     }
 
     @AfterEach
     void tearDown() {
-        this.credential = new Credential("", "");
-        this.trainer = new Trainer("", "", "",credential);
+        this.password = "";
+        this.trainer = new TrainerDTO("", "", "","");
     }
 
     @Test
     void emptyFields() {
-        assertThrows(TrainerException.class, () -> register.verifyFullFields(trainer));
+        assertThrows(TrainerException.class, () -> register.verifyFullFields(trainer, password));
     }
 
     @Test
@@ -55,20 +56,21 @@ class RegisterTest  {
     @Test
     void emailRegistered() {
         String email = "ana@gmail.com";
-        assertThrows(TrainerException.class, () -> register.verifyAccount(trainer.getCredentials().getUsername(), email));
+        assertThrows(TrainerException.class, () -> register.verifyAccount(trainer.getUsername(), email));
     }
 
     @Test
     void usernameRegistered() {
-        Credential credentials = new Credential("ana", "123");
-        assertThrows(TrainerException.class, () -> register.verifyAccount(credentials.getUsername(), trainer.getEmail()));
+        String username = "ana1";
+        String email = "";
+        assertThrows(TrainerException.class, () -> register.verifyAccount(username, email));
     }
 
     @Test
     void correctData() {
-        Credential credentials = new Credential("user", "Example12*Cred#");
-        Trainer trainer = new Trainer("ana","123456789", "ana@gmail.com", credentials);
-        assertThrows(TrainerException.class, () -> register.registerTrainer(trainer));
+        TrainerDTO trainerDTO = new TrainerDTO("ana","123456789", "ana@gmail.com", "user");
+        String password = "Example12*Cred#";
+        assertThrows(TrainerException.class, () -> register.registerTrainer(trainerDTO,password));
     }
 
 }

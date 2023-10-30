@@ -1,6 +1,7 @@
 package ing.soft.quemadiariaproject.Controller;
 
 import ing.soft.quemadiariaproject.HelloApplication;
+import ing.soft.quemadiariaproject.Model.DTOs.CertificateDTO;
 import ing.soft.quemadiariaproject.Model.DTOs.TrainerDTO;
 import ing.soft.quemadiariaproject.Model.Domain.Entities.Trainer;
 import javafx.fxml.FXMLLoader;
@@ -8,11 +9,13 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.List;
 
 public class CentralController {
     private static CentralController centralController;
     private static Stage stage;
     private static TrainerDTO trainerDTO;
+    private static List<CertificateDTO> certificatesDTO;
     public static CentralController getInstance(){
         if(centralController == null){
             stage = new Stage();
@@ -21,6 +24,19 @@ public class CentralController {
         }
         return centralController;
     }
+
+    public static List<CertificateDTO> getCertificatesDTO() {
+        return certificatesDTO;
+    }
+
+    public static void setCertificatesDTO(List<CertificateDTO> certificatesDTO) {
+        CentralController.certificatesDTO = certificatesDTO;
+    }
+
+    public static void setCentralController(CentralController centralController) {
+        CentralController.centralController = centralController;
+    }
+
     public static void setTrainerDTO(TrainerDTO trainerDto){
         trainerDTO = trainerDto;
     }

@@ -19,19 +19,13 @@ public class WelcomeController {
     public Button buttonLogin;
     public Button buttonSignUp;
     public Label errLabel;
+    private AccountFacade login = new AccountService();
 
     public void login(ActionEvent actionEvent) {
         String username = usernameField.getText();
         String password = passwordField.getText();
-        AccountFacade login = new AccountService();
         try{
-            Trainer trainer = login.doLogin(username, password);
-            TrainerDTO trainerDTO = new TrainerDTO(trainer.getName(),
-                    trainer.getIdentification(), trainer.getEmail(),
-                    trainer.getSocialMedia(),
-                    trainer.getCredentials().getUsername(),
-                    trainer.getSpeciality());
-            CentralController.setTrainerDTO(trainerDTO);
+            login.doLogin(username, password);
             CentralController.getInstance().loadScreen("TrainerPrincipal.fxml");
         }catch(TrainerException | IOException e){
             errLabel.setText(e.getMessage());

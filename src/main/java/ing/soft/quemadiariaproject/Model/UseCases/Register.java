@@ -14,10 +14,10 @@ public class Register {
         this.persistence = persistence;
     }
 
-    public void verifyFullFields(Trainer trainer) throws TrainerException {
-        if(trainer.getName().isEmpty() || trainer.getIdentification().isEmpty()
-                || trainer.getEmail().isEmpty() || trainer.getCredentials().getUsername().isEmpty()
-                || trainer.getCredentials().getPassword().isEmpty()){
+    public void verifyFullFields(TrainerDTO trainerDTO, String password) throws TrainerException {
+        if(trainerDTO.getName().isEmpty() || trainerDTO.getIdentification().isEmpty()
+                || trainerDTO.getEmail().isEmpty() || trainerDTO.getUsername().isEmpty()
+                || password.isEmpty()){
             throw new TrainerException("Missing information");
         }
     }
@@ -51,11 +51,13 @@ public class Register {
             }
         }
     }
-    public void registerTrainer(Trainer trainer) throws TrainerException {
-        verifyFullFields(trainer);
-        verifyEmail(trainer.getEmail());
-        verifyPassword(trainer.getCredentials().getPassword());
-        verifyAccount(trainer.getCredentials().getUsername(), trainer.getEmail());
+    public void registerTrainer(TrainerDTO trainerDTO, String password) throws TrainerException {
+        verifyFullFields(trainerDTO, password);
+        verifyEmail(trainerDTO.getEmail());
+        verifyPassword(password);
+        verifyAccount(trainerDTO.getUsername(), trainerDTO.getEmail());
+        Trainer trainer = new Trainer(trainerDTO.getName(), trainerDTO.getIdentification(),
+                trainerDTO.getEmail(), new Credential(trainerDTO.getUsername(), password));
         persistence.saveTrainer(trainer);
     }
     public void updateTrainer(TrainerDTO trainerDTO) {

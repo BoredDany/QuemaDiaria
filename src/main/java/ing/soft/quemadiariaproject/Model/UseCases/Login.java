@@ -1,9 +1,16 @@
 package ing.soft.quemadiariaproject.Model.UseCases;
 
+import ing.soft.quemadiariaproject.Controller.CentralController;
+import ing.soft.quemadiariaproject.Model.DTOs.CertificateDTO;
+import ing.soft.quemadiariaproject.Model.DTOs.TrainerDTO;
 import ing.soft.quemadiariaproject.Model.Domain.Entities.Credential;
 import ing.soft.quemadiariaproject.Model.Domain.Entities.Trainer;
 import ing.soft.quemadiariaproject.Model.Domain.Exceptions.TrainerException;
 import ing.soft.quemadiariaproject.Model.UseCases.Persistence.Persistence;
+import ing.soft.quemadiariaproject.Model.UseCases.Persistence.PersistenceCert;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Login {
     private Persistence persistence;
@@ -20,10 +27,15 @@ public class Login {
             throw new TrainerException("Trainer not found");
         }
     }
-    public Trainer doLogin(String username, String password) throws TrainerException {
+    public void doLogin(String username, String password) throws TrainerException {
         Trainer trainer = persistence.consultByUsername(username);
         trainerExists(trainer);
         verifyCredentials(username, password,trainer);
-        return trainer;
+        TrainerDTO trainerDTO = new TrainerDTO(trainer.getName(),
+                trainer.getIdentification(), trainer.getEmail(),
+                trainer.getSocialMedia(),
+                trainer.getCredentials().getUsername(),
+                trainer.getSpeciality());
+        CentralController.setTrainerDTO(trainerDTO);
     }
 }

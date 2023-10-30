@@ -26,6 +26,13 @@ public class TrainerDTO {
 
     }
 
+    public TrainerDTO(String name, String identification, String email, String username) {
+        this.name = name;
+        this.identification = identification;
+        this.email = email;
+        this.username = username;
+    }
+
     public String getName() {
         return name;
     }

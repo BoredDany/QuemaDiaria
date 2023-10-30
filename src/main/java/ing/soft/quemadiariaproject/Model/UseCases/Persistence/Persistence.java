@@ -1,5 +1,6 @@
 package ing.soft.quemadiariaproject.Model.UseCases.Persistence;
 
+import ing.soft.quemadiariaproject.Model.DTOs.CertificateDTO;
 import ing.soft.quemadiariaproject.Model.Domain.Entities.Trainer;
 import ing.soft.quemadiariaproject.Model.Domain.Exceptions.TrainerException;
 

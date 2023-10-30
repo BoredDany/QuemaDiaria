@@ -1,5 +1,6 @@
 package ing.soft.quemadiariaproject.Controller;
 
+import ing.soft.quemadiariaproject.Model.DTOs.TrainerDTO;
 import ing.soft.quemadiariaproject.Model.Domain.Entities.Credential;
 import ing.soft.quemadiariaproject.Model.Domain.Entities.Trainer;
 import ing.soft.quemadiariaproject.Model.Domain.Exceptions.TrainerException;
@@ -21,7 +22,7 @@ public class SignUpController {
     public TextField passwordField;
     public Button buttonSignUp;
     public Button buttonBack;
-
+    private AccountFacade register = new AccountService();
     public void signUp(ActionEvent actionEvent) {
         String name = nameField.getText();
         String identification = idField.getText();
@@ -30,9 +31,8 @@ public class SignUpController {
         String password = passwordField.getText();
 
         try{
-            AccountFacade register = new AccountService();
-            Trainer newTrainer = new Trainer(name, identification, email, new Credential(username, password));
-            register.registerTrainer(newTrainer);
+            TrainerDTO trainerDTO = new TrainerDTO(name, identification, email, username);
+            register.registerTrainer(trainerDTO, password);
             errrLabel.setText("Saved successfully");
         }catch(TrainerException e){
             errrLabel.setText(e.getMessage());

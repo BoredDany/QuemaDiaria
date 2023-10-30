@@ -36,5 +36,34 @@
       "username": "a",
       "password": "a123#$LS"
     }
+  },
+  {
+    "name": "gabriel",
+    "identification": "123456789",
+    "email": "g@gmail.com",
+    "socialMedia": [],
+    "credentials": {
+      "username": "gabrielJaja",
+      "password": "Abc123*ijk$**"
+    },
+    "speciality": "gymrat"
+  },
+  {
+    "name": "a",
+    "identification": "1234567899",
+    "email": "aa@g.com",
+    "credentials": {
+      "username": "anita",
+      "password": "aA12345$\u002615"
+    }
+  },
+  {
+    "name": "ana",
+    "identification": "123456789",
+    "email": "ana@gmail.com",
+    "credentials": {
+      "username": "user",
+      "password": "Example12*Cred#"
+    }
   }
 ]
