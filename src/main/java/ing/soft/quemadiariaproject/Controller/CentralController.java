@@ -2,7 +2,9 @@ package ing.soft.quemadiariaproject.Controller;
 
 import ing.soft.quemadiariaproject.HelloApplication;
 import ing.soft.quemadiariaproject.Model.DTOs.CertificateDTO;
+import ing.soft.quemadiariaproject.Model.DTOs.ProgramDTO;
 import ing.soft.quemadiariaproject.Model.DTOs.TrainerDTO;
+import ing.soft.quemadiariaproject.Model.DTOs.WalletDTO;
 import ing.soft.quemadiariaproject.Model.Domain.Entities.Trainer;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -17,6 +19,9 @@ public class CentralController {
     private static TrainerDTO trainerDTO;
     private static List<CertificateDTO> certificatesDTO;
     private static CertificateDTO certificateDTO;
+    private static List<ProgramDTO> programsDTO;
+    private static ProgramDTO programDTO;
+    private static WalletDTO walletDTO;
     public static CentralController getInstance(){
         if(centralController == null){
             stage = new Stage();
@@ -32,6 +37,30 @@ public class CentralController {
 
     public static void setCertificateDTO(CertificateDTO certificateDTO) {
         CentralController.certificateDTO = certificateDTO;
+    }
+
+    public static WalletDTO getWalletDTO() {
+        return walletDTO;
+    }
+
+    public static void setWalletDTO(WalletDTO walletDTO) {
+        CentralController.walletDTO = walletDTO;
+    }
+
+    public static List<ProgramDTO> getProgramsDTO() {
+        return programsDTO;
+    }
+
+    public static void setProgramsDTO(List<ProgramDTO> programsDTO) {
+        CentralController.programsDTO = programsDTO;
+    }
+
+    public static void setProgramDTO(ProgramDTO programDTO) {
+        CentralController.programDTO = programDTO;
+    }
+
+    public static ProgramDTO getProgramDTO() {
+        return programDTO;
     }
 
     public static List<CertificateDTO> getCertificatesDTO() {

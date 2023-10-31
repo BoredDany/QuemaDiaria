@@ -41,15 +41,28 @@ public class TrainerPrincipalController {
     }
 
     public void goToStatistics(MouseEvent actionEvent) {
-
+        try {
+            CentralController.getInstance().loadScreen("Statistics.fxml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void goToWallet(MouseEvent actionEvent) {
-
+        try {
+            CentralController.getInstance().loadScreen("TrainerWallet.fxml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void goToPrograms(MouseEvent actionEvent) {
+        try {
+            CentralController.getInstance().loadScreen("Programs.fxml");
+        } catch (IOException e) {
+            e.printStackTrace();
 
+        }
     }
 
     public void goAccount(MouseEvent mouseEvent) {
