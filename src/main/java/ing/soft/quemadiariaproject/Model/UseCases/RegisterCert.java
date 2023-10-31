@@ -3,10 +3,13 @@ package ing.soft.quemadiariaproject.Model.UseCases;
 import ing.soft.quemadiariaproject.Controller.CentralController;
 import ing.soft.quemadiariaproject.Controller.CertificateController;
 import ing.soft.quemadiariaproject.Model.DTOs.CertificateDTO;
+import ing.soft.quemadiariaproject.Model.DTOs.TrainerDTO;
 import ing.soft.quemadiariaproject.Model.Domain.Entities.Certificate;
+import ing.soft.quemadiariaproject.Model.Domain.Entities.Trainer;
 import ing.soft.quemadiariaproject.Model.Domain.Exceptions.TrainerException;
 import ing.soft.quemadiariaproject.Model.UseCases.Persistence.PersistenceCert;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -28,11 +31,23 @@ public class RegisterCert {
         if(registerCertificate.isRegistered(username, institution, expeditionDate, title)){
             throw new TrainerException("Certificate already registered");
         }
+
+    }
+    public void verifydate(String date) throws TrainerException {
+        String [] infoDate = date.split("/");
+        int day = Integer.parseInt(infoDate[0]);
+        int moth = Integer.parseInt(infoDate[1]);
+        int year = Integer.parseInt(infoDate[2]);
+        LocalDate fdate = LocalDate.of(year, moth, day);
+        if(fdate.isAfter(LocalDate.now())){
+            throw new TrainerException("Invalid date");
+        }
     }
     public void SaveNewCertificate(CertificateDTO certificateDTO) throws TrainerException {
         verifyEmptyFields(certificateDTO);
         verifyCertRegistered(certificateDTO.getTrainerUsername(), certificateDTO.getInstitution(),
                 certificateDTO.getExpeditionDate(), certificateDTO.getTitle());
+        verifydate(certificateDTO.getExpeditionDate());
         Certificate certificate = new Certificate(certificateDTO.getTrainerUsername(),
                 certificateDTO.getInstitution(), certificateDTO.getExpeditionDate(),
                 certificateDTO.getDescription(), certificateDTO.getLink(),

@@ -44,6 +44,30 @@ public class CertificateDTO {
         return title;
     }
 
+    public void setTrainerUsername(String trainerUsername) {
+        TrainerUsername = trainerUsername;
+    }
+
+    public void setInstitution(String institution) {
+        this.institution = institution;
+    }
+
+    public void setExpeditionDate(String expeditionDate) {
+        this.expeditionDate = expeditionDate;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
     @Override
     public String toString() {
         return "CertificateDTO{" +

@@ -46,7 +46,7 @@ public class CertificateController {
             int day = selectedDate.getDayOfMonth();
             int month = selectedDate.getMonthValue();
             int year = selectedDate.getYear();
-            date = day + " " + month + " " + year;
+            date = day + "/" + month + "/" + year;
         }
         return date;
     }
@@ -66,9 +66,9 @@ public class CertificateController {
             cleanErrLabels();
             registerCertificate.saveCertificate(getCertInfo());
             errCertifLabel.setText("Certificate saved");
-        } catch (TrainerException e) {
+        } catch (TrainerException e){
             errCertifLabel.setText(e.getMessage());
-        } catch (Exception ec){
+        } catch(Exception ec){
             ec.printStackTrace();
         }
     }

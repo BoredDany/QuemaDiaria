@@ -54,12 +54,7 @@ public class TrainerAccountController {
         }
     }
     public void getCertificates(){
-        certificateFacade.consultByUsername(CentralController.getTrainerDTO().getUsername());
-        List<String>items = new ArrayList<>();
-        for(CertificateDTO c: CentralController.getCertificatesDTO()){
-            items.add(c.getTitle()+ "-" + c.getInstitution() + "-" + c.getExpeditionDate());
-        }
-        ObservableList<String> observableItems = FXCollections.observableArrayList(items);
+        ObservableList<String> observableItems = FXCollections.observableArrayList(certificateFacade.getResumeCert());
         certificatesList.setItems(observableItems);
     }
     public void initialize(){
@@ -84,7 +79,6 @@ public class TrainerAccountController {
             e.printStackTrace();
         }
     }
-
     public void changeName(ActionEvent actionEvent) {
         String newName = nameField.getText();
         try{
@@ -96,7 +90,6 @@ public class TrainerAccountController {
             errPersonalInfoLabel.setText(e.getMessage());
         }
     }
-
     public void changeId(ActionEvent actionEvent) {
         String newId = identificationField.getText();
         try{
@@ -108,7 +101,6 @@ public class TrainerAccountController {
             errPersonalInfoLabel.setText(e.getMessage());
         }
     }
-
     public void changeEmail(ActionEvent actionEvent) {
         String newEmail = emailField.getText();
         try{
@@ -120,7 +112,6 @@ public class TrainerAccountController {
             errPersonalInfoLabel.setText(e.getMessage());
         }
     }
-
     public void changeSpeciality(ActionEvent actionEvent) {
         String newSpeciality = specialityField.getText();
         try{
@@ -132,7 +123,6 @@ public class TrainerAccountController {
             errAccInfoLabel.setText(e.getMessage());
         }
     }
-
     public void addSocialmedia(ActionEvent actionEvent) {
         String newSocialmedia = newSocialmediaField.getText();
         try{
@@ -156,7 +146,6 @@ public class TrainerAccountController {
         }
 
     }
-
     public void changeUsername(ActionEvent actionEvent) {
         String newUsername = usernameField.getText();
         try{
@@ -175,7 +164,6 @@ public class TrainerAccountController {
             System.out.println(e.getMessage());
         }
     }
-
     public void addCertificate(ActionEvent actionEvent) {
         try{
             CentralController.getInstance().loadScreen("Certificate.fxml");
@@ -186,14 +174,16 @@ public class TrainerAccountController {
     public void openCertificate(MouseEvent mouseEvent) {
         String username = CentralController.getTrainerDTO().getUsername();
         String infoCert = (String) certificatesList.getSelectionModel().getSelectedItem();
-        String[] dataCert = infoCert.split("-");
+        String[] dataCert = infoCert.split("\n");
         String title = dataCert[0];
         String institution = dataCert[1];
-        String expDate = dataCert[1];
+        String expDate = dataCert[2];
         CertificateDTO certificateDTO = certificateFacade.getCertificate(username, title, institution, expDate);
         CentralController.setCertificateDTO(certificateDTO);
-        System.out.println(title + "-" + institution + "-" + expDate);
-        System.out.println(certificateDTO);
-        //CentralController.getInstance().loadScreen("CertificateEdit.fxml");
+        try {
+            CentralController.getInstance().loadScreen("CertificateEdit.fxml");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

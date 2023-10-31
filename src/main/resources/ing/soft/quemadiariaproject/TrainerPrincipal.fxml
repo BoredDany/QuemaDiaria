@@ -5,40 +5,59 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: FFFF;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ing.soft.quemadiariaproject.Controller.TrainerPrincipalController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: FFFF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ing.soft.quemadiariaproject.Controller.TrainerPrincipalController">
    <children>
-      <Button fx:id="buttonLogout" layoutX="20.0" layoutY="22.0" mnemonicParsing="false" onAction="#logout" text="Log out" />
-      <Label fx:id="usernameLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="228.0" layoutY="116.0" prefHeight="25.0" prefWidth="145.0" textAlignment="CENTER" textOverrun="CLIP" />
-      <Label fx:id="specialityLabel" alignment="CENTER" layoutX="228.0" layoutY="146.0" prefHeight="25.0" prefWidth="145.0" />
+      <Button fx:id="buttonLogout" layoutX="20.0" layoutY="22.0" mnemonicParsing="false" onAction="#logout" style="-fx-background-color: #4C548C;" text="Log out" textFill="WHITE">
+         <font>
+            <Font name="Berlin Sans FB" size="12.0" />
+         </font></Button>
+      <Label fx:id="usernameLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="228.0" layoutY="124.0" prefHeight="25.0" prefWidth="145.0" style="-fx-background-color: #333F4E;" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP" />
+      <Label fx:id="specialityLabel" alignment="CENTER" layoutX="228.0" layoutY="147.0" prefHeight="25.0" prefWidth="145.0" style="-fx-background-color: #333F4E;" textFill="WHITE" />
       <ImageView fitHeight="63.0" fitWidth="67.0" layoutX="269.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@profile.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="accountIcon" fitHeight="63.0" fitWidth="67.0" layoutX="98.0" layoutY="202.0" onMouseClicked="#goToAccount" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="accountIcon" fitHeight="63.0" fitWidth="67.0" layoutX="98.0" layoutY="227.0" onMouseClicked="#goToAccount" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@account.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="63.0" fitWidth="83.0" layoutX="215.0" layoutY="202.0" onMouseClicked="#goToStatistics" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="63.0" fitWidth="83.0" layoutX="215.0" layoutY="227.0" onMouseClicked="#goToStatistics" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@statistics.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="63.0" fitWidth="75.0" layoutX="331.0" layoutY="202.0" onMouseClicked="#goToWallet" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="63.0" fitWidth="75.0" layoutX="331.0" layoutY="227.0" onMouseClicked="#goToWallet" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@wallet.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="83.0" fitWidth="67.0" layoutX="436.0" layoutY="200.0" onMouseClicked="#goToPrograms" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="83.0" fitWidth="67.0" layoutX="436.0" layoutY="225.0" onMouseClicked="#goToPrograms" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@programs.png" />
          </image>
       </ImageView>
-      <Label layoutX="108.0" layoutY="274.0" text="Account" />
-      <Label layoutX="223.0" layoutY="274.0" text="Statistics" />
-      <Label layoutX="346.0" layoutY="274.0" text="Wallet" />
-      <Label layoutX="444.0" layoutY="274.0" text="Programs" />
+      <Label layoutX="108.0" layoutY="299.0" text="Account">
+         <font>
+            <Font name="Bauhaus 93" size="12.0" />
+         </font></Label>
+      <Label layoutX="223.0" layoutY="301.0" text="Statistics">
+         <font>
+            <Font name="Bauhaus 93" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="345.0" layoutY="301.0" text="Wallet">
+         <font>
+            <Font name="Bauhaus 93" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="445.0" layoutY="301.0" text="Programs">
+         <font>
+            <Font name="Bauhaus 93" size="12.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
