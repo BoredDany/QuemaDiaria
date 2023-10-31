@@ -1,20 +1,14 @@
 [
   {
     "trainerUsername": "ana1",
-    "accountNumber": "una",
-    "bankName": "ota",
-    "accountType": "oya"
+    "accountNumber": "1234",
+    "bankName": "OTRO",
+    "accountType": "A"
   },
   {
-    "trainerUsername": "ana1",
-    "accountNumber": "a",
-    "bankName": "a",
-    "accountType": "a"
-  },
-  {
-    "trainerUsername": "ana1",
-    "accountNumber": "a",
-    "bankName": "a",
-    "accountType": "a"
+    "trainerUsername": "ana2",
+    "accountNumber": "1234",
+    "bankName": "OTRA",
+    "accountType": "A"
   }
 ]

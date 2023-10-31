@@ -9,4 +9,7 @@ public interface PersistenceWallet {
     void saveWallet(Wallet wallet);
     List<Wallet> consultWalletsList();
     WalletDTO consult(String username);
+    boolean walletExists(WalletDTO walletDTO);
+
+    void updateFile(List<Wallet> wallets);
 }

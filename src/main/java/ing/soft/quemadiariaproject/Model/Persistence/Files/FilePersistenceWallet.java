@@ -79,4 +79,33 @@ public class FilePersistenceWallet implements PersistenceWallet {
         }
         return null;
     }
+
+    @Override
+    public boolean walletExists(WalletDTO walletDTO) {
+        for(Wallet w: consultWalletsList()){
+            if(!w.getTrainerUsername().equals(walletDTO.getTrainerUsername()) &&
+                    w.getAccountNumber().equals(walletDTO.getAccountNumber()) &&
+                    w.getBankName().equals(walletDTO.getBankName())){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public void updateFile(List<Wallet> wallets) {
+        try {
+            //System.out.println("Saving trainers to file...");
+            FileWriter fileWriter = new FileWriter("Wallets.json");
+            Gson gson = new GsonBuilder()
+                    .setPrettyPrinting()
+                    .create();
+            gson.toJson(wallets, fileWriter);
+            fileWriter.close();
+            //System.out.println("Trainers successfully saved to file");
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw new RuntimeException("Error managing the file", e);
+        }
+    }
 }

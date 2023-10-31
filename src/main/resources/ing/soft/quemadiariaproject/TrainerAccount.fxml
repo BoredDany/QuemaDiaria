@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: FFFF;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ing.soft.quemadiariaproject.Controller.TrainerAccountController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: FFFF;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ing.soft.quemadiariaproject.Controller.TrainerAccountController">
    <children>
-      <Button fx:id="buttonBack" layoutX="22.0" layoutY="21.0" mnemonicParsing="false" onAction="#goToPrincipalTrainer" text="Back" />
+      <Button fx:id="buttonBack" layoutX="18.0" layoutY="17.0" mnemonicParsing="false" onAction="#goToPrincipalTrainer" text="Back" />
       <Label layoutX="36.0" layoutY="64.0" text="PERSONAL INFORMATION">
          <font>
             <Font name="Bauhaus 93" size="12.0" />
@@ -73,5 +71,10 @@
             <Font name="Berlin Sans FB" size="12.0" />
          </font>
       </Label>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="519.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@account.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

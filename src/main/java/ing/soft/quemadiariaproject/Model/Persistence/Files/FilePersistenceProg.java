@@ -1,6 +1,7 @@
 package ing.soft.quemadiariaproject.Model.Persistence.Files;
 
 import com.google.gson.*;
+import ing.soft.quemadiariaproject.Model.Domain.Entities.Certificate;
 import ing.soft.quemadiariaproject.Model.Domain.Entities.Program;
 import ing.soft.quemadiariaproject.Model.UseCases.Persistence.PersistenceProg;
 
@@ -62,5 +63,12 @@ public class FilePersistenceProg implements PersistenceProg {
             e.printStackTrace();
             throw new RuntimeException("Error managing the file", e);
         }
+    }
+    @Override
+    public List<Program> consultByUsername(String username) {
+        return consultProgramsList().
+                stream().
+                filter(certificate -> certificate.getTrainerUsername().equals(username)).
+                toList();
     }
 }

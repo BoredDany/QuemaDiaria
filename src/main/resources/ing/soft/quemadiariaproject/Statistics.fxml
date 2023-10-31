@@ -3,50 +3,57 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ing.soft.quemadiariaproject.Controller.StatisticsController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ffff;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ing.soft.quemadiariaproject.Controller.StatisticsController">
     <children>
         <Button fx:id="buttonBack" layoutX="36.0" layoutY="31.0" mnemonicParsing="false" onAction="#goToPrincipalTrainer" text="Back" />
-        <Label fx:id="lblProgramName" layoutX="121.0" layoutY="94.0" text="Program">
+        <Label fx:id="lblProgramName" layoutX="121.0" layoutY="76.0" text="Program">
             <font>
                 <Font name="System Bold" size="17.0" />
             </font></Label>
-        <Label fx:id="lblLikes" layoutX="265.0" layoutY="94.0" text="Likes">
+        <Label fx:id="lblLikes" layoutX="265.0" layoutY="76.0" text="Likes">
             <font>
                 <Font name="System Bold" size="17.0" />
             </font></Label>
-        <Label fx:id="lblViews" layoutX="410.0" layoutY="94.0" text="Views">
+        <Label fx:id="lblViews" layoutX="410.0" layoutY="76.0" text="Views">
             <font>
                 <Font name="System Bold" size="17.0" />
             </font></Label>
-        <ListView layoutX="93.0" layoutY="174.0" prefHeight="212.0" prefWidth="413.0" />
-        <Label fx:id="name1" layoutX="123.0" layoutY="187.0" text="Label" />
-        <Label fx:id="likes1" layoutX="260.0" layoutY="187.0" text="Label" />
-        <Label fx:id="views1" layoutX="404.0" layoutY="187.0" text="Label" />
-        <Label fx:id="name2" layoutX="123.0" layoutY="218.0" text="Label" />
-        <Label fx:id="likes2" layoutX="260.0" layoutY="218.0" text="Label" />
-        <Label fx:id="views2" layoutX="404.0" layoutY="218.0" text="Label" />
-        <Label fx:id="name3" layoutX="123.0" layoutY="246.0" text="Label" />
-        <Label fx:id="likes3" layoutX="260.0" layoutY="246.0" text="Label" />
-        <Label fx:id="views3" layoutX="404.0" layoutY="246.0" text="Label" />
-        <ListView layoutX="93.0" layoutY="132.0" prefHeight="42.0" prefWidth="413.0" />
-        <Label fx:id="likesSum" layoutX="262.0" layoutY="145.0" text="Label">
+        <ListView layoutX="93.0" layoutY="156.0" prefHeight="212.0" prefWidth="413.0" />
+        <Label fx:id="name1" layoutX="123.0" layoutY="169.0" text="Label" />
+        <Label fx:id="likes1" layoutX="260.0" layoutY="169.0" text="Label" />
+        <Label fx:id="views1" layoutX="404.0" layoutY="169.0" text="Label" />
+        <Label fx:id="name2" layoutX="123.0" layoutY="200.0" text="Label" />
+        <Label fx:id="likes2" layoutX="260.0" layoutY="200.0" text="Label" />
+        <Label fx:id="views2" layoutX="404.0" layoutY="200.0" text="Label" />
+        <Label fx:id="name3" layoutX="123.0" layoutY="228.0" text="Label" />
+        <Label fx:id="likes3" layoutX="260.0" layoutY="228.0" text="Label" />
+        <Label fx:id="views3" layoutX="404.0" layoutY="228.0" text="Label" />
+        <ListView layoutX="93.0" layoutY="114.0" prefHeight="42.0" prefWidth="413.0" />
+        <Label fx:id="likesSum" layoutX="262.0" layoutY="127.0" text="Label">
             <font>
                 <Font name="System Bold" size="17.0" />
             </font>
         </Label>
-        <Label fx:id="viewsSum" layoutX="404.0" layoutY="145.0" text="Label">
+        <Label fx:id="viewsSum" layoutX="404.0" layoutY="127.0" text="Label">
             <font>
                 <Font name="System Bold" size="17.0" />
             </font>
         </Label>
-        <Label fx:id="likesPercentage1" layoutX="297.0" layoutY="187.0" text="Label" textFill="#808080" />
-        <Label fx:id="likesPercentage2" layoutX="297.0" layoutY="218.0" text="Label" textFill="#808080" />
-        <Label fx:id="likesPercentage3" layoutX="297.0" layoutY="246.0" text="Label" textFill="#808080" />
-        <Label fx:id="viewsPercentage1" layoutX="443.0" layoutY="187.0" text="Label" textFill="#808080" />
-        <Label fx:id="viewsPercentage2" layoutX="443.0" layoutY="218.0" text="Label" textFill="#808080" />
-        <Label fx:id="viewsPercentage3" layoutX="443.0" layoutY="246.0" text="Label" textFill="#808080" />
+        <Label fx:id="likesPercentage1" layoutX="297.0" layoutY="169.0" text="Label" textFill="#808080" />
+        <Label fx:id="likesPercentage2" layoutX="297.0" layoutY="200.0" text="Label" textFill="#808080" />
+        <Label fx:id="likesPercentage3" layoutX="297.0" layoutY="228.0" text="Label" textFill="#808080" />
+        <Label fx:id="viewsPercentage1" layoutX="443.0" layoutY="169.0" text="Label" textFill="#808080" />
+        <Label fx:id="viewsPercentage2" layoutX="443.0" layoutY="200.0" text="Label" textFill="#808080" />
+        <Label fx:id="viewsPercentage3" layoutX="443.0" layoutY="228.0" text="Label" textFill="#808080" />
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="518.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@statistics.png" />
+         </image>
+      </ImageView>
     </children>
 </AnchorPane>
