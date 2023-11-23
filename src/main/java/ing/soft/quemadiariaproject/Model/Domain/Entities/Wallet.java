@@ -30,15 +30,4 @@ public class Wallet {
         return this.accountType;
     }
 
-    public void setTrainerUsername(String nombreUsuario) {
-    }
-
-    public void setAccountNumber(String number) {
-    }
-
-    public void setBankName(String miBanco) {
-    }
-
-    public void setAccountType(String cuentaDeAhorros) {
-    }
 }

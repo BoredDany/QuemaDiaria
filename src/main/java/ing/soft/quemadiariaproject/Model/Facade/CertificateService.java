@@ -17,6 +17,7 @@ import java.util.List;
 public class CertificateService implements CertificateFacade{
     PersistenceCert persistence = new FilePersistenceCert();
     RegisterCert certificateRegister = new RegisterCert(persistence);
+
     @Override
     public void saveCertificate(CertificateDTO certificate) throws TrainerException {
         certificateRegister.SaveNewCertificate(certificate);
@@ -44,5 +45,11 @@ public class CertificateService implements CertificateFacade{
     public void deleteCertificate(CertificateDTO certificateDTO) throws TrainerException {
         certificateRegister.removeCertificate(certificateDTO);
     }
+
+    @Override
+    public void modifyCertificate(CertificateDTO oldCertificate, CertificateDTO newCertificate) throws TrainerException{
+        certificateRegister.saveModifiedCert(oldCertificate, newCertificate);
+    }
+
 
 }

@@ -4,6 +4,7 @@ import ing.soft.quemadiariaproject.Controller.CentralController;
 import ing.soft.quemadiariaproject.Model.DTOs.CertificateDTO;
 import ing.soft.quemadiariaproject.Model.DTOs.TrainerDTO;
 import ing.soft.quemadiariaproject.Model.Domain.Entities.Certificate;
+import ing.soft.quemadiariaproject.Model.Domain.Entities.Trainer;
 import ing.soft.quemadiariaproject.Model.Domain.Exceptions.TrainerException;
 import ing.soft.quemadiariaproject.Model.UseCases.Persistence.PersistenceCert;
 
@@ -62,10 +63,7 @@ public class RegisterCert {
         CentralController.setCertificatesDTO(certificateList);
     }
 
-    public void removeCertificate(CertificateDTO certificateDTO) throws TrainerException {
-        if(certificateDTO == null){
-            throw new TrainerException("Any certificate selected");
-        }
+    public void removeCertificate(CertificateDTO certificateDTO) {
         List<CertificateDTO> newCertificates = new ArrayList<>();
         for(CertificateDTO c: CentralController.getCertificatesDTO()){
             if(certificateDTO.getTitle().equals(c.getTitle())
@@ -78,6 +76,27 @@ public class RegisterCert {
         }
         CentralController.setCertificatesDTO(newCertificates);
         registerCertificate.updateCertificates(certificateDTO);
+    }
+
+    public void saveModifiedCert(CertificateDTO oldCertificate, CertificateDTO newCertificate) throws TrainerException{
+        verifyEmptyFields(newCertificate);
+        verifydate(newCertificate.getExpeditionDate());
+
+        List<Certificate> certificates = registerCertificate.consultListCertificates();
+        for (int i = 0; i < certificates.size(); i++) {
+            Certificate c = certificates.get(i);
+            if (c.getTrainerUsername().equals(oldCertificate.getTrainerUsername())
+                    && c.getInstitution().equals(oldCertificate.getInstitution())
+                    && c.getExpeditionDate().equals(oldCertificate.getExpeditionDate())
+                    && c.getTitle().equals(oldCertificate.getTitle())) {
+                Certificate certificateModified = new Certificate(newCertificate.getTrainerUsername(),
+                        newCertificate.getInstitution(), newCertificate.getExpeditionDate(),
+                        newCertificate.getDescription(), newCertificate.getLink(),
+                        newCertificate.getTitle());
+                certificates.set(i, certificateModified);
+            }
+        }
+        registerCertificate.updateFile(certificates);
     }
 
 }

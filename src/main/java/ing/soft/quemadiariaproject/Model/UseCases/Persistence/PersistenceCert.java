@@ -14,4 +14,5 @@ public interface PersistenceCert {
     void updateFile(List<Certificate> certificateList);
     CertificateDTO consult(String username, String title, String institution, String expDate);
     void updateCertificates(CertificateDTO certificateDTO);
+
 }

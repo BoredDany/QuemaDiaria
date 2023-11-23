@@ -174,16 +174,6 @@ public class TrainerAccountController {
             System.out.println(e.getMessage());
         }
     }
-    public void getInfoCertificate(MouseEvent mouseEvent) {
-        /*String username = CentralController.getTrainerDTO().getUsername();
-        String infoCert = (String) certificatesList.getSelectionModel().getSelectedItem();
-        String[] dataCert = infoCert.split("\n");
-        String title = dataCert[0];
-        String institution = dataCert[1];
-        String expDate = dataCert[2];
-        CertificateDTO certificateDTO = certificateFacade.getCertificate(username, title, institution, expDate);
-        CentralController.setCertificateDTO(certificateDTO);*/
-    }
 
     public CertificateDTO getSelectedCertificate(){
         CertificateDTO certificateDTO = null;
