@@ -13,4 +13,5 @@ public interface PersistenceCert {
     boolean isRegistered(String username, String institution, String expeditionDate, String title);
     void updateFile(List<Certificate> certificateList);
     CertificateDTO consult(String username, String title, String institution, String expDate);
+    void updateCertificates(CertificateDTO certificateDTO);
 }

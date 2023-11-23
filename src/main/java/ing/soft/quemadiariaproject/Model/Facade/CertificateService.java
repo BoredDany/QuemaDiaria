@@ -2,6 +2,7 @@ package ing.soft.quemadiariaproject.Model.Facade;
 
 import ing.soft.quemadiariaproject.Controller.CentralController;
 import ing.soft.quemadiariaproject.Model.DTOs.CertificateDTO;
+import ing.soft.quemadiariaproject.Model.DTOs.TrainerDTO;
 import ing.soft.quemadiariaproject.Model.Domain.Entities.Certificate;
 import ing.soft.quemadiariaproject.Model.Domain.Exceptions.TrainerException;
 import ing.soft.quemadiariaproject.Model.Persistence.Files.FilePersistenceCert;
@@ -37,6 +38,11 @@ public class CertificateService implements CertificateFacade{
             items.add(c.getTitle()+ "\n" + c.getInstitution() + "\n" + c.getExpeditionDate());
         }
         return items;
+    }
+
+    @Override
+    public void deleteCertificate(CertificateDTO certificateDTO) throws TrainerException {
+        certificateRegister.removeCertificate(certificateDTO);
     }
 
 }

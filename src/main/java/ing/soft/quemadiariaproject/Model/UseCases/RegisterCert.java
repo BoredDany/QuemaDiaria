@@ -1,17 +1,14 @@
 package ing.soft.quemadiariaproject.Model.UseCases;
 
 import ing.soft.quemadiariaproject.Controller.CentralController;
-import ing.soft.quemadiariaproject.Controller.CertificateController;
 import ing.soft.quemadiariaproject.Model.DTOs.CertificateDTO;
 import ing.soft.quemadiariaproject.Model.DTOs.TrainerDTO;
 import ing.soft.quemadiariaproject.Model.Domain.Entities.Certificate;
-import ing.soft.quemadiariaproject.Model.Domain.Entities.Trainer;
 import ing.soft.quemadiariaproject.Model.Domain.Exceptions.TrainerException;
 import ing.soft.quemadiariaproject.Model.UseCases.Persistence.PersistenceCert;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class RegisterCert {
@@ -64,4 +61,23 @@ public class RegisterCert {
         }
         CentralController.setCertificatesDTO(certificateList);
     }
+
+    public void removeCertificate(CertificateDTO certificateDTO) throws TrainerException {
+        if(certificateDTO == null){
+            throw new TrainerException("Any certificate selected");
+        }
+        List<CertificateDTO> newCertificates = new ArrayList<>();
+        for(CertificateDTO c: CentralController.getCertificatesDTO()){
+            if(certificateDTO.getTitle().equals(c.getTitle())
+                    && certificateDTO.getInstitution().equals(c.getInstitution())
+                    && certificateDTO.getExpeditionDate().equals(c.getExpeditionDate())){
+
+            }else{
+                newCertificates.add(c);
+            }
+        }
+        CentralController.setCertificatesDTO(newCertificates);
+        registerCertificate.updateCertificates(certificateDTO);
+    }
+
 }
