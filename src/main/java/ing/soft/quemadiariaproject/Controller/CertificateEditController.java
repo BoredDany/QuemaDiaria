@@ -79,7 +79,7 @@ public class CertificateEditController {
             CertificateDTO old = CentralController.getCertificateDTO();
             CertificateDTO newCertificate = new CertificateDTO(old.getTrainerUsername(), institutionField.getText(), old.getExpeditionDate(), old.getDescription(), old.getLink(), old.getTitle());
             certificateFacade.modifyCertificate(CentralController.getCertificateDTO(), newCertificate);
-            errTitleLabel.setText("Title modified and saved");
+            errInstitLabel.setText("Institution modified and saved");
         } catch (TrainerException e){
             errTitleLabel.setText(e.getMessage());
         }
@@ -93,7 +93,7 @@ public class CertificateEditController {
             CertificateDTO old = CentralController.getCertificateDTO();
             CertificateDTO newCertificate = new CertificateDTO(old.getTrainerUsername(), old.getInstitution(), old.getExpeditionDate(), descriptionField.getText(), old.getLink(), old.getTitle());
             certificateFacade.modifyCertificate(CentralController.getCertificateDTO(), newCertificate);
-            errTitleLabel.setText("Title modified and saved");
+            errDescriptLabel.setText("Description modified and saved");
         } catch (TrainerException e){
             errTitleLabel.setText(e.getMessage());
         }
@@ -104,7 +104,7 @@ public class CertificateEditController {
             CertificateDTO old = CentralController.getCertificateDTO();
             CertificateDTO newCertificate = new CertificateDTO(old.getTrainerUsername(), old.getInstitution(), old.getExpeditionDate(), old.getDescription(), linkField.getText(), old.getTitle());
             certificateFacade.modifyCertificate(CentralController.getCertificateDTO(), newCertificate);
-            errTitleLabel.setText("Title modified and saved");
+            errLinkLabel.setText("Link modified and saved");
         } catch (TrainerException e){
             errTitleLabel.setText(e.getMessage());
         }
