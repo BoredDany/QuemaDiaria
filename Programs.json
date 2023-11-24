@@ -1,0 +1,26 @@
+[
+  {
+    "TrainerUsername": "ana1",
+    "name": "firstRoutine",
+    "description": "warm up routine",
+    "duration": "15:23",
+    "likes": 45,
+    "views": 300
+  },
+  {
+    "TrainerUsername": "ana1",
+    "name": "secondRoutine",
+    "description": "cardio routine",
+    "duration": "12:45",
+    "likes": 25,
+    "views": 500
+  },
+  {
+    "TrainerUsername": "ana2",
+    "name": "25 min Full Body ",
+    "description": "full-body routine",
+    "duration": "25:53",
+    "likes": 478,
+    "views": 1000
+  }
+]

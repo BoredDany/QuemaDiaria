@@ -1,0 +1,14 @@
+[
+  {
+    "trainerUsername": "ana1",
+    "accountNumber": "1234",
+    "bankName": "OTRO",
+    "accountType": "A"
+  },
+  {
+    "trainerUsername": "ana2",
+    "accountNumber": "1234",
+    "bankName": "OTRA",
+    "accountType": "A"
+  }
+]
