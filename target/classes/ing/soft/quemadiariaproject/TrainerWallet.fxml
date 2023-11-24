@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: FFFF;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ing.soft.quemadiariaproject.Controller.TrainerWalletController">
+    <fx:define>
+    </fx:define>
+    <children>
+        <Label layoutX="150.0" layoutY="172.0" text="Account number:" />
+        <Label layoutX="150.0" layoutY="222.0" text="Bank name:" />
+        <Label layoutX="150.0" layoutY="272.0" text="Account Type:" />
+
+        <TextField fx:id="accNumberField" layoutX="248.0" layoutY="168.0" prefHeight="25.0" prefWidth="173.0" />
+        <TextField fx:id="bankField" layoutX="219.0" layoutY="218.0" prefHeight="25.0" prefWidth="202.0" />
+
+        <Button fx:id="buttonSave" layoutX="280.0" layoutY="326.0" onAction="#saveAccount" style="-fx-background-color: #19A49C;" text="Save" textFill="WHITE" />
+      <Button fx:id="buttonBack" layoutX="22.0" layoutY="28.0" mnemonicParsing="false" onAction="#goToPrincipal" text="Back" />
+      <TextField fx:id="accountTypeField" layoutX="231.0" layoutY="268.0" prefHeight="25.0" prefWidth="190.0" />
+      <Label fx:id="errAccLabel" alignment="CENTER" layoutX="177.0" layoutY="367.0" prefHeight="17.0" prefWidth="249.0" />
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="268.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@wallet.png" />
+         </image>
+      </ImageView>
+      <Label alignment="CENTER" layoutX="226.0" layoutY="102.0" prefHeight="34.0" prefWidth="152.0" text="Bank account">
+         <font>
+            <Font name="Bauhaus 93" size="22.0" />
+         </font>
+      </Label>
+    </children>
+</AnchorPane>
