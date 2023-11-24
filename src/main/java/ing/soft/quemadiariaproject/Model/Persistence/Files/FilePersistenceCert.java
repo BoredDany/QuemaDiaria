@@ -91,12 +91,14 @@ public class FilePersistenceCert implements PersistenceCert {
     @Override
     public void updateFile(List<Certificate> certificateList) {
         try {
+            //System.out.println("Saving certificates to file...");
             FileWriter fileWriter = new FileWriter("Certificates.json");
             Gson gson = new GsonBuilder()
                     .setPrettyPrinting()
                     .create();
             gson.toJson(certificateList, fileWriter);
             fileWriter.close();
+            //System.out.println("Certificates successfully saved to file");
         } catch (IOException e) {
             e.printStackTrace();
             throw new RuntimeException("Error managing the file", e);
@@ -116,21 +118,5 @@ public class FilePersistenceCert implements PersistenceCert {
             }
         }
         return null;
-    }
-
-    @Override
-    public void updateCertificates(CertificateDTO certificateDTO){
-        List <Certificate> certificates = consultListCertificates();
-        List<Certificate> newCertificates = new ArrayList<>();
-        for(Certificate c: certificates){
-            if(c.getTitle().equals(certificateDTO.getTitle())
-                    && c.getInstitution().equals(certificateDTO.getInstitution())
-                    && c.getExpeditionDate().equals(certificateDTO.getExpeditionDate())
-                    && c.getTrainerUsername().equals(certificateDTO.getTrainerUsername())){
-            }else{
-                newCertificates.add(c);
-            }
-        }
-        updateFile(newCertificates);
     }
 }

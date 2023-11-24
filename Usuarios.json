@@ -14,7 +14,6 @@
     "name": "ANA2",
     "identification": "123456789",
     "email": "ana2@gmail.com",
-    "socialMedia": [],
     "credentials": {
       "username": "ana2",
       "password": "1234QQsss#*"
@@ -65,6 +64,24 @@
     "credentials": {
       "username": "user",
       "password": "Example12*Cred#"
+    }
+  },
+  {
+    "name": "matias",
+    "identification": "120348394",
+    "email": "djsfjhd@gmail.com",
+    "credentials": {
+      "username": "elmati",
+      "password": "a123#$LS"
+    }
+  },
+  {
+    "name": "matias",
+    "identification": "1027280400",
+    "email": "matiasfgonzalezvalencia@gmail.com",
+    "credentials": {
+      "username": "matias",
+      "password": "a123#$LS"
     }
   }
 ]

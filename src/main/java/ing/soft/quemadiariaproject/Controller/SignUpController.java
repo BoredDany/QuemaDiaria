@@ -2,6 +2,7 @@ package ing.soft.quemadiariaproject.Controller;
 
 import ing.soft.quemadiariaproject.Model.DTOs.TrainerDTO;
 import ing.soft.quemadiariaproject.Model.Domain.Entities.Credential;
+import ing.soft.quemadiariaproject.Model.Domain.Entities.EmailSender;
 import ing.soft.quemadiariaproject.Model.Domain.Entities.Trainer;
 import ing.soft.quemadiariaproject.Model.Domain.Exceptions.TrainerException;
 import ing.soft.quemadiariaproject.Model.Facade.AccountFacade;
@@ -13,6 +14,9 @@ import javafx.scene.control.TextField;
 
 import java.io.IOException;
 
+
+import static ing.soft.quemadiariaproject.Controller.CentralController.centralController;
+
 public class SignUpController {
     public Label errrLabel;
     public TextField nameField;
@@ -22,6 +26,7 @@ public class SignUpController {
     public TextField passwordField;
     public Button buttonSignUp;
     public Button buttonBack;
+    public Button buttonCode;
     private AccountFacade register = new AccountService();
     public void signUp(ActionEvent actionEvent) {
         String name = nameField.getText();
@@ -29,7 +34,6 @@ public class SignUpController {
         String email = emailField.getText();
         String username = usernameField.getText();
         String password = passwordField.getText();
-
         try{
             TrainerDTO trainerDTO = new TrainerDTO(name, identification, email, username);
             register.registerTrainer(trainerDTO, password);
@@ -37,6 +41,10 @@ public class SignUpController {
         }catch(TrainerException e){
             errrLabel.setText(e.getMessage());
         }
+
+        EmailSender.sendConfirmationEmail(email);
+
+
     }
 
     public void goToWelcome(ActionEvent actionEvent) {
@@ -46,4 +54,13 @@ public class SignUpController {
             e.printStackTrace();
         }
     }
+
+    public void goToCode(ActionEvent actionEvent) {
+        try {
+            CentralController.getInstance().loadScreen("CodeVerification.fxml");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }

@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.util.List;
 
 public class CentralController {
-    private static CentralController centralController;
+    static CentralController centralController;
     private static Stage stage;
     private static TrainerDTO trainerDTO;
     private static List<CertificateDTO> certificatesDTO;

@@ -1,7 +1,6 @@
 package ing.soft.quemadiariaproject.Controller;
 
 import ing.soft.quemadiariaproject.Model.DTOs.CertificateDTO;
-import ing.soft.quemadiariaproject.Model.Domain.Entities.Certificate;
 import ing.soft.quemadiariaproject.Model.Domain.Exceptions.TrainerException;
 import ing.soft.quemadiariaproject.Model.Facade.AccountFacade;
 import ing.soft.quemadiariaproject.Model.Facade.AccountService;
@@ -45,8 +44,6 @@ public class TrainerAccountController {
     public Label errSocialmediaLabel;
     public Label errAccInfoLabel;
     public Label errCertifLabel;
-    public Button btnDeleteCert;
-    public Button btnOpenCert;
     private AccountFacade modifyData = new AccountService();
     private CertificateFacade certificateFacade = new CertificateService();
     public void getSocialmedia(){
@@ -174,48 +171,19 @@ public class TrainerAccountController {
             System.out.println(e.getMessage());
         }
     }
-
-    public CertificateDTO getSelectedCertificate(){
-        CertificateDTO certificateDTO = null;
-        if(!((certificatesList.getSelectionModel().getSelectedItem()) == null)){
-            String username = CentralController.getTrainerDTO().getUsername();
-            String infoCert = (String) certificatesList.getSelectionModel().getSelectedItem();
-            String[] dataCert = infoCert.split("\n");
-            String title = dataCert[0];
-            String institution = dataCert[1];
-            String expDate = dataCert[2];
-            certificateDTO = certificateFacade.getCertificate(username, title, institution, expDate);
-        }
-        return certificateDTO;
-    }
-
-    public void openCertificate() {
+    public void openCertificate(MouseEvent mouseEvent) {
+        String username = CentralController.getTrainerDTO().getUsername();
+        String infoCert = (String) certificatesList.getSelectionModel().getSelectedItem();
+        String[] dataCert = infoCert.split("\n");
+        String title = dataCert[0];
+        String institution = dataCert[1];
+        String expDate = dataCert[2];
+        CertificateDTO certificateDTO = certificateFacade.getCertificate(username, title, institution, expDate);
+        CentralController.setCertificateDTO(certificateDTO);
         try {
-            CentralController.setCertificateDTO(getSelectedCertificate());
-            if(CentralController.getCertificateDTO() != null){
-                CentralController.getInstance().loadScreen("CertificateEdit.fxml");
-            }
-            else{
-                errCertifLabel.setText("Any selected");
-            }
+            CentralController.getInstance().loadScreen("CertificateEdit.fxml");
         } catch (IOException e) {
             throw new RuntimeException(e);
-        }
-    }
-
-    public void deleteCertificate() {
-        try {
-            CentralController.setCertificateDTO(getSelectedCertificate());
-            if(CentralController.getCertificateDTO() != null){
-                certificateFacade.deleteCertificate(CentralController.getCertificateDTO());
-                errCertifLabel.setText("Certificate deleted");
-                getCertificates();
-            }
-            else{
-                errCertifLabel.setText("Any selected");
-            }
-        } catch (TrainerException e) {
-            errCertifLabel.setText(e.getMessage());
         }
     }
 }

@@ -11,6 +11,4 @@ public interface CertificateFacade {
     void consultByUsername(String username);
     CertificateDTO getCertificate(String username, String title, String institution, String expDate);
     List<String> getResumeCert();
-    void deleteCertificate(CertificateDTO certificateDTO) throws TrainerException;
-    void modifyCertificate(CertificateDTO oldCertificate, CertificateDTO newCertificate) throws TrainerException;
 }

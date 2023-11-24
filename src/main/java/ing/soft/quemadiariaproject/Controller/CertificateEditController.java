@@ -1,7 +1,5 @@
 package ing.soft.quemadiariaproject.Controller;
 
-import ing.soft.quemadiariaproject.Model.DTOs.CertificateDTO;
-import ing.soft.quemadiariaproject.Model.Domain.Entities.Certificate;
 import ing.soft.quemadiariaproject.Model.Domain.Exceptions.TrainerException;
 import ing.soft.quemadiariaproject.Model.Facade.CertificateFacade;
 import ing.soft.quemadiariaproject.Model.Facade.CertificateService;
@@ -64,50 +62,18 @@ public class CertificateEditController {
     }
 
     public void saveTitle(ActionEvent actionEvent) {
-        try{
-            CertificateDTO old = CentralController.getCertificateDTO();
-            CertificateDTO newCertificate = new CertificateDTO(old.getTrainerUsername(), old.getInstitution(), old.getExpeditionDate(), old.getDescription(), old.getLink(), titleField.getText());
-            certificateFacade.modifyCertificate(CentralController.getCertificateDTO(), newCertificate);
-            errTitleLabel.setText("Title modified and saved");
-        } catch (TrainerException e){
-            errTitleLabel.setText(e.getMessage());
-        }
     }
 
     public void saveInstitution(ActionEvent actionEvent) {
-        try{
-            CertificateDTO old = CentralController.getCertificateDTO();
-            CertificateDTO newCertificate = new CertificateDTO(old.getTrainerUsername(), institutionField.getText(), old.getExpeditionDate(), old.getDescription(), old.getLink(), old.getTitle());
-            certificateFacade.modifyCertificate(CentralController.getCertificateDTO(), newCertificate);
-            errInstitLabel.setText("Institution modified and saved");
-        } catch (TrainerException e){
-            errTitleLabel.setText(e.getMessage());
-        }
     }
 
     public void saveExpDate(ActionEvent actionEvent) {
     }
 
     public void saveDescription(ActionEvent actionEvent) {
-        try{
-            CertificateDTO old = CentralController.getCertificateDTO();
-            CertificateDTO newCertificate = new CertificateDTO(old.getTrainerUsername(), old.getInstitution(), old.getExpeditionDate(), descriptionField.getText(), old.getLink(), old.getTitle());
-            certificateFacade.modifyCertificate(CentralController.getCertificateDTO(), newCertificate);
-            errDescriptLabel.setText("Description modified and saved");
-        } catch (TrainerException e){
-            errTitleLabel.setText(e.getMessage());
-        }
     }
 
     public void saveLink(ActionEvent actionEvent) {
-        try{
-            CertificateDTO old = CentralController.getCertificateDTO();
-            CertificateDTO newCertificate = new CertificateDTO(old.getTrainerUsername(), old.getInstitution(), old.getExpeditionDate(), old.getDescription(), linkField.getText(), old.getTitle());
-            certificateFacade.modifyCertificate(CentralController.getCertificateDTO(), newCertificate);
-            errLinkLabel.setText("Link modified and saved");
-        } catch (TrainerException e){
-            errTitleLabel.setText(e.getMessage());
-        }
     }
 
     public void goToHyperlink(ActionEvent actionEvent) {
