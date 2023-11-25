@@ -3,24 +3,30 @@
     "TrainerUsername": "ana1",
     "name": "firstRoutine",
     "description": "warm up routine",
-    "duration": "15:23",
+    "duration": 40,
     "likes": 45,
-    "views": 300
+    "views": 300,
+    "subscriptors": 0,
+    "acomplishment": 0
   },
   {
     "TrainerUsername": "ana1",
     "name": "secondRoutine",
     "description": "cardio routine",
-    "duration": "12:45",
+    "duration": 10,
     "likes": 25,
-    "views": 500
+    "views": 500,
+    "subscriptors": 1,
+    "acomplishment": 40
   },
   {
     "TrainerUsername": "ana2",
     "name": "25 min Full Body ",
     "description": "full-body routine",
-    "duration": "25:53",
+    "duration": 25,
     "likes": 478,
-    "views": 1000
+    "views": 1000,
+    "subscriptors": 2,
+    "acomplishment": 5
   }
 ]

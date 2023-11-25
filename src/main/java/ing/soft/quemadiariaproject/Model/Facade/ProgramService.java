@@ -20,4 +20,29 @@ public class ProgramService implements ProgramFacade {
         }
         return resume;
     }
+
+    @Override
+    public List<ProgramDTO> trainerProgramsStatistics(String username) {
+        return programManagement.trainerProgramsStatistics(username);
+    }
+
+    @Override
+    public double avgViews(List<ProgramDTO> programDTOS) {
+        return programManagement.avgViews(programDTOS);
+    }
+
+    @Override
+    public double avgLikes(List<ProgramDTO> programDTOS) {
+        return programManagement.avgLikes(programDTOS);
+    }
+
+    @Override
+    public double avgSubs(List<ProgramDTO> programDTOS) {
+        return programManagement.avgSubs(programDTOS);
+    }
+
+    @Override
+    public double avgAcomp(List<ProgramDTO> programDTOS) {
+        return programManagement.avgAcom(programDTOS);
+    }
 }

@@ -1,12 +1,22 @@
 package ing.soft.quemadiariaproject.Controller;
 
+import ing.soft.quemadiariaproject.Model.DTOs.ProgramDTO;
 import ing.soft.quemadiariaproject.Model.Domain.Entities.Program;
+import ing.soft.quemadiariaproject.Model.Facade.ProgramFacade;
+import ing.soft.quemadiariaproject.Model.Facade.ProgramService;
 import ing.soft.quemadiariaproject.Model.Persistence.Files.FilePersistenceProg;
 import ing.soft.quemadiariaproject.Model.UseCases.Persistence.PersistenceProg;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 
 import java.io.IOException;
 import java.text.DecimalFormat;
@@ -75,64 +85,68 @@ public class StatisticsController {
 
     @FXML
     public Label viewsSum;
-    PersistenceProg persistence = new FilePersistenceProg();
-    public double totalViews=0;
-    public double totalLikes=0;
+    public TableView tablePrograms;
+    public Label labelLikes;
+    public Label labelViews;
+    public Label labelSubs;
+    public Label labelAcom;
+    public Label labelUserName;
+    ProgramFacade programFacade = new ProgramService();
+
     @FXML
     public void initialize() {
-
-        List<Program> programs = persistence.consultProgramsList();
-        for (int i = 0; i < programs.size(); i++) {
-            Program program = programs.get(i);
-            totalViews+=program.getViews();
-            totalLikes+=program.getLikes();
-        }
-        viewsSum.setVisible(true);
-        viewsSum.setText(String.valueOf(totalViews));
-        likesSum.setVisible(true);
-        likesSum.setText(String.valueOf(totalLikes));
-        showPrograms();
+        labelUserName.setText(CentralController.getTrainerDTO().getUsername()+"'s programs");
+        List<ProgramDTO> userPrograms = programFacade.trainerProgramsStatistics(CentralController.getTrainerDTO().getUsername());
+        createTable(userPrograms);
+        labelAcom.setText(String.valueOf(programFacade.avgAcomp(userPrograms)));
+        labelLikes.setText(String.valueOf(programFacade.avgLikes(userPrograms)));
+        labelViews.setText(String.valueOf(programFacade.avgViews(userPrograms)));
+        labelSubs.setText(String.valueOf(programFacade.avgSubs(userPrograms)));
     }
 
-    public void goToPrincipalTrainer (ActionEvent actionEvent){
+    public void createTable(List<ProgramDTO> userPrograms){
+        ObservableList<ProgramDTO> observableUserPrograms = FXCollections.observableArrayList(userPrograms);
+        TableColumn<ProgramDTO, String> nombreColumn = new TableColumn<>("Program");
+        TableColumn<ProgramDTO, Integer> suscriptoresColumn = new TableColumn<>("Subscriptors");
+        TableColumn<ProgramDTO, Integer> likesColumn = new TableColumn<>("Likes");
+        TableColumn<ProgramDTO, Integer> vistasColumn = new TableColumn<>("Views");
+        TableColumn<ProgramDTO, Integer> acomColumn = new TableColumn<>("% Acomplishment");
+
+        nombreColumn.setCellValueFactory(cellData -> {
+            return new SimpleStringProperty(cellData.getValue().getName());
+        });
+
+        suscriptoresColumn.setCellValueFactory(cellData -> {
+            int subscriptorsValue = cellData.getValue().getSubscriptors();
+            return new SimpleIntegerProperty(subscriptorsValue).asObject();
+        });
+
+        likesColumn.setCellValueFactory(cellData -> {
+            int likesValue = cellData.getValue().getLikes();
+            return new SimpleIntegerProperty(likesValue).asObject();
+        });
+
+        vistasColumn.setCellValueFactory(cellData -> {
+            int viewsValue = cellData.getValue().getViews();
+            return new SimpleIntegerProperty(viewsValue).asObject();
+        });
+
+        acomColumn.setCellValueFactory(cellData -> {
+            int acomplishmentValue = cellData.getValue().getAcomplishment();
+            return new SimpleIntegerProperty(acomplishmentValue).asObject();
+        });
+
+        tablePrograms.getColumns().addAll(nombreColumn, suscriptoresColumn, likesColumn, vistasColumn, acomColumn);
+
+        tablePrograms.setItems(observableUserPrograms);
+    }
+
+    public void goToPrincipalTrainer(ActionEvent actionEvent) {
         try {
             CentralController.getInstance().loadScreen("TrainerPrincipal.fxml");
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-    public void setProgramDetails (Label name, Label likes, Label views, Program program, Label likesPercentage, Label viewsPercentage){
-        name.setVisible(true);
-        name.setText(program.getName());
-        likes.setVisible(true);
-        likes.setText(String.valueOf(program.getLikes()));
-        views.setVisible(true);
-        views.setText(String.valueOf(program.getViews()));
-        double totalLikesPercentage = ((double) program.getLikes() /  totalLikes)*100;
-        double totalViewsPercentage = ((double) program.getViews() / totalViews)*100;
-        DecimalFormat formato = new DecimalFormat("#.##");
-        String numeroFormateado = formato.format(totalLikesPercentage);
-        likesPercentage.setVisible(true);
-        likesPercentage.setText(String.valueOf(numeroFormateado) + "%");
-        String numeroFormateado2 = formato.format(totalViewsPercentage);
-        viewsPercentage.setVisible(true);
-        viewsPercentage.setText(String.valueOf(numeroFormateado2) + "%");
-
-    }
-    public void showPrograms () {
-
-        List<Program> programs = persistence.consultProgramsList();
-
-        if (!programs.isEmpty()) {
-            setProgramDetails(name1, likes1, views1, programs.get(0),likesPercentage1, viewsPercentage1);
-        }
-        if (programs.size() > 1) {
-            setProgramDetails(name2, likes2, views2, programs.get(1),likesPercentage2, viewsPercentage2);
-        }
-        if (programs.size() > 2) {
-            setProgramDetails(name3, likes3, views3, programs.get(2),likesPercentage3, viewsPercentage3);
-        }
-
     }
 }
 

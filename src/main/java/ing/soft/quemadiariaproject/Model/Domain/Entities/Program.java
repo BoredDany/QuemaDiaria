@@ -1,35 +1,25 @@
 package ing.soft.quemadiariaproject.Model.Domain.Entities;
 
 public class Program {
-    String TrainerUsername;
-    String name;
-    String description;
-    String duration;
-    int likes;
-    int views;
+    private String TrainerUsername;
+    private String name;
+    private String description;
+    private String duration;
+    private int likes;
+    private int views;
+    private int subscriptors;
+    private int acomplishment;
 
-    public Program(String trainerUsername, String name, String description) {
-        TrainerUsername = trainerUsername;
-        this.name = name;
-        this.description = description;
-    }
-
-    public Program(String trainerUsername, String name, String description, String duration, int likes, int views) {
+    public Program(String trainerUsername, String name, String description, String duration, int likes, int views, int subscriptors, int acomplishment) {
         TrainerUsername = trainerUsername;
         this.name = name;
         this.description = description;
         this.duration = duration;
         this.likes = likes;
         this.views = views;
+        this.subscriptors = subscriptors;
+        this.acomplishment = acomplishment;
     }
-
-    public Program(String name, String duration, int likes, int views) {
-        this.name = name;
-        this.duration = duration;
-        this.likes = likes;
-        this.views = views;
-    }
-
     public String getTrainerUsername() {
         return TrainerUsername;
     }
@@ -42,32 +32,24 @@ public class Program {
         return description;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getDuration() {
-        return duration;
-    }
-
-    public void setDuration(String duration) {
-        this.duration = duration;
-    }
-
     public int getLikes() {
         return likes;
-    }
-
-    public void setLikes(int likes) {
-        this.likes = likes;
     }
 
     public int getViews() {
         return views;
     }
 
-    public void setViews(int views) {
-        this.views = views;
+    public String getDuration() {
+        return duration;
+    }
+
+    public int getSubscriptors() {
+        return subscriptors;
+    }
+
+    public int getAcomplishment() {
+        return acomplishment;
     }
 
     @Override
@@ -78,4 +60,5 @@ public class Program {
                 ", description='" + description + '\'' +
                 '}';
     }
+
 }

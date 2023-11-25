@@ -19,7 +19,6 @@ public class CentralController {
     private static String password;
     private static List<CertificateDTO> certificatesDTO;
     private static CertificateDTO certificateDTO;
-    private static List<ProgramDTO> programsDTO;
     private static ProgramDTO programDTO;
     private static WalletDTO walletDTO;
     private static int confirmationCode;
@@ -46,14 +45,6 @@ public class CentralController {
 
     public static void setWalletDTO(WalletDTO walletDTO) {
         CentralController.walletDTO = walletDTO;
-    }
-
-    public static List<ProgramDTO> getProgramsDTO() {
-        return programsDTO;
-    }
-
-    public static void setProgramsDTO(List<ProgramDTO> programsDTO) {
-        CentralController.programsDTO = programsDTO;
     }
 
     public static void setProgramDTO(ProgramDTO programDTO) {
