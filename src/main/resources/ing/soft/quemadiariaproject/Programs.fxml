@@ -5,9 +5,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ffff;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ing.soft.quemadiariaproject.Controller.TrainerProgramsController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #333F4E;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ing.soft.quemadiariaproject.Controller.TrainerProgramsController">
     <children>
-        <Button fx:id="buttonBack" layoutX="36.0" layoutY="31.0" mnemonicParsing="false" onAction="#goToPrincipalTrainer" text="Back" />
+        <Button fx:id="buttonBack" layoutX="36.0" layoutY="31.0" mnemonicParsing="false" onAction="#goToPrincipalTrainer" style="-fx-background-color: #35EEB7;" text="Back" textFill="WHITE" />
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="513.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@programs.png" />

@@ -75,5 +75,14 @@
       "username": "anitaaa",
       "password": "DAda123##$"
     }
+  },
+  {
+    "name": "ana",
+    "identification": "ana",
+    "email": "dany.m.q.28@gmail.com",
+    "credentials": {
+      "username": "AnaAna",
+      "password": "AAAaaa123#$"
+    }
   }
 ]
